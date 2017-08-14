@@ -1,0 +1,98 @@
+
+2017-03-23 17:03:00:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O660319130934","in_charge":"thgh","langitude":"0.0","market_id":"225","address":"gkhff","name":"dhghh ngo","user_id":"66","latitude":"0.0","institute_id":"6","is_ngo_type":"1","telephone":" ","mobile":"01714050505"},{"is_pharma_type":"1","category_id":"9","temp_id":"O660319131017","in_charge":"fhfg","langitude":"0.0","market_id":"225","address":"gkhuty","name":"dhhfhu non ngo","user_id":"66","latitude":"0.0","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":""}]}
+2017-03-23 18:06:34:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O660319130934","in_charge":"thgh","langitude":"0.0","market_id":"225","address":"gkhff","name":"dhghh ngo","user_id":"66","latitude":"0.0","institute_id":"6","is_ngo_type":"1","telephone":" ","mobile":"01714050505"},{"is_pharma_type":"1","category_id":"9","temp_id":"O660319131017","in_charge":"fhfg","langitude":"0.0","market_id":"225","address":"gkhuty","name":"dhhfhu non ngo","user_id":"66","latitude":"0.0","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":""}]}
+2017-03-23 18:07:01:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O660319130934","in_charge":"thgh","langitude":"0.0","market_id":"225","address":"gkhff","name":"dhghh ngo","user_id":"66","latitude":"0.0","institute_id":"6","is_ngo_type":"1","telephone":" ","mobile":"01714050505"},{"is_pharma_type":"1","category_id":"9","temp_id":"O660319131017","in_charge":"fhfg","langitude":"0.0","market_id":"225","address":"gkhuty","name":"dhhfhu non ngo","user_id":"66","latitude":"0.0","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":""}]}
+2017-03-23 18:07:48:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O660319130934","in_charge":"","langitude":"0.0","market_id":"225","address":"gkhff","name":"dhghh ngo","user_id":"66","latitude":"0.0","institute_id":"6","is_ngo_type":"1","telephone":" ","mobile":"01714050505"},{"is_pharma_type":"1","category_id":"9","temp_id":"O660319131017","in_charge":"fhfg","langitude":"0.0","market_id":"225","address":"gkhuty","name":"dhhfhu non ngo","user_id":"66","latitude":"0.0","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":""}]}
+2017-03-23 18:08:13:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O660319130934","in_charge":"","langitude":"0.0","market_id":"225","address":"","name":"dhghh ngo","user_id":"66","latitude":"0.0","institute_id":"6","is_ngo_type":"1","telephone":" ","mobile":"01714050505"},{"is_pharma_type":"1","category_id":"9","temp_id":"O660319131017","in_charge":"fhfg","langitude":"0.0","market_id":"225","address":"gkhuty","name":"dhhfhu non ngo","user_id":"66","latitude":"0.0","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":""}]}
+2017-03-23 18:16:53:{"outlet_list":[{"temp_id":"O940323175738","name":"test without optional","in_charge":"","address":"","telephone":" ","mobile":"01715080806","market_id":"238","category_id":"9","is_ngo_type":"0","user_id":"92","institute_id":"","is_pharma_type":"1","latitude":"23.7802765","langitude":"90.4059284"},{"temp_id":"O940323175903","name":"test with optional","in_charge":"thh","address":"ryugf","telephone":" ","mobile":"01714080906","market_id":"238","category_id":"9","is_ngo_type":"0","user_id":"92","institute_id":"","is_pharma_type":"1","latitude":"23.7802765","langitude":"90.4059284"}]}
+2017-05-16 19:56:29:{"outlet_list":[]}
+2017-05-16 19:59:23:{"outlet_list":[]}
+2017-05-16 19:59:28:{"outlet_list":[]}
+2017-05-16 20:03:02:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"10543","bonus_party_type":"1","id":"10543","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"An222222","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10542","bonus_party_type":"1","id":"10542","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"Annnnnnnnnnnn","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"1","id":"10546","langitude":"90.4055","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-16 20:44:59:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"10543","bonus_party_type":"1","id":"10543","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"An222222","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10542","bonus_party_type":"1","id":"10542","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"Annnnnnnnnnnn","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"1","id":"10546","langitude":"90.4055","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-16 20:45:20:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"10543","bonus_party_type":"1","id":"10543","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"An222222","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10542","bonus_party_type":"1","id":"10542","langitude":"null","market_id":"10296","address":"","isUpdated":"1","name":"Annnnnnnnnnnn","user_id":"218","latitude":"null","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"0178765432123"},{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"1","id":"10546","langitude":"90.4055","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-16 22:22:09:{"outlet_list":[]}
+2017-05-16 22:24:25:{"outlet_list":[]}
+2017-05-16 22:45:29:{"outlet_list":[]}
+2017-05-18 13:16:48:{"outlet_list":[]}
+2017-05-18 15:23:31:{"outlet_list":[]}
+2017-05-18 16:11:17:{"outlet_list":[]}
+2017-05-18 16:22:51:{"outlet_list":[]}
+2017-05-24 17:55:37:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"40679","bonus_party_type":"1","id":"40679","langitude":"90.4055","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-24 18:07:16:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"O101000524164417","in_charge":"emrul ","id":"0","langitude":"90.4055","market_id":"30343","address":"Dhaka Bangladesh limited access to email ","isUpdated":"0","name":"Arena gs pharmaceuticals ","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01844054141"},{"is_pharma_type":"1","category_id":"11","temp_id":"O101000524164757","in_charge":"mostafa","id":"0","langitude":"90.4056","market_id":"30344","address":"rupayan center Dhaka Bangladesh ","isUpdated":"0","name":"Arena NGO asd pharmaceuticals","user_id":"218","latitude":"23.7803","institute_id":"252","is_ngo_type":"1","telephone":" ","mobile":"01844054101"}]}
+2017-05-25 15:12:14:{"outlet_list":[]}
+2017-05-25 15:21:42:{"outlet_list":[]}
+2017-05-25 15:37:35:{"outlet_list":[]}
+2017-05-25 15:48:09:{"outlet_list":[]}
+2017-05-25 15:54:27:{"outlet_list":[]}
+2017-05-25 15:58:19:{"outlet_list":[]}
+2017-05-25 16:06:55:{"outlet_list":[]}
+2017-05-25 16:09:46:{"outlet_list":[]}
+2017-05-25 16:11:58:{"outlet_list":[]}
+2017-05-25 16:28:04:{"outlet_list":[]}
+2017-05-25 16:30:38:{"outlet_list":[]}
+2017-05-25 16:33:41:{"outlet_list":[]}
+2017-05-25 16:36:09:{"outlet_list":[]}
+2017-05-25 16:37:35:{"outlet_list":[]}
+2017-05-25 16:39:31:{"outlet_list":[]}
+2017-05-25 16:41:26:{"outlet_list":[]}
+2017-05-25 16:44:13:{"outlet_list":[]}
+2017-05-25 16:44:27:{"outlet_list":[]}
+2017-05-25 19:29:54:{"outlet_list":[]}
+2017-05-25 19:31:56:{"outlet_list":[]}
+2017-05-25 19:56:12:{"outlet_list":[]}
+2017-05-25 20:02:56:{"outlet_list":[]}
+2017-05-25 20:23:56:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O101000525200437","in_charge":"","id":"0","langitude":"90.4058","market_id":"30345","address":"","isUpdated":"1","name":"aaaa ngmp pharmacy ","user_id":"218","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01879466404"},{"is_pharma_type":"0","category_id":"8","temp_id":"O101000525200529","in_charge":"","id":"0","langitude":"90.4058","market_id":"30346","address":"","isUpdated":"1","name":"bbbb ps n pharmacy ","user_id":"218","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01409400458"}]}
+2017-05-25 20:35:12:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O101000525200437","in_charge":"","id":"0","langitude":"90.4058","market_id":"30345","address":"","isUpdated":"1","name":"aaaa ngmp pharmacy ","user_id":"218","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01879466404"},{"is_pharma_type":"0","category_id":"8","temp_id":"O101000525200529","in_charge":"","id":"0","langitude":"90.4058","market_id":"30346","address":"","isUpdated":"1","name":"bbbb ps n pharmacy ","user_id":"218","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01409400458"}]}
+2017-05-25 21:01:17:{"outlet_list":[]}
+2017-05-25 21:02:58:{"outlet_list":[]}
+2017-05-25 21:03:26:{"outlet_list":[]}
+2017-05-25 21:04:35:{"outlet_list":[]}
+2017-05-25 21:05:05:{"outlet_list":[]}
+2017-05-25 21:08:51:{"outlet_list":[]}
+2017-05-25 21:40:30:{"outlet_list":[]}
+2017-05-25 21:47:17:{"outlet_list":[{"id":"0","temp_id":"O101000525214611","name":"tyh","in_charge":"","address":"","telephone":" ","mobile":"01855321457","market_id":"30345","category_id":"7","is_ngo_type":"0","user_id":"218","institute_id":"","is_pharma_type":"1","latitude":"23.7799","langitude":"90.4047","isUpdated":"0"}]}
+2017-05-25 22:40:56:{"outlet_list":[{"is_pharma_type":"1","category_id":"8","temp_id":"O101000525224019","in_charge":"","id":"0","langitude":"90.4056","market_id":"10301","address":"","isUpdated":"0","name":"fjjh","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01522136521"}]}
+2017-05-25 22:45:33:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"0","id":"10546","langitude":"90.4056","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-25 22:56:07:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","in_charge":"","bonus_party_type":"0","id":"10546","langitude":"90.4056","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-25 23:03:39:{"outlet_list":[{"is_pharma_type":"1","category_id":"8","temp_id":"O101000525230330","in_charge":" ","id":"0","langitude":"90.4056","market_id":"10301","address":"chnb","isUpdated":"0","name":"fhjh","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01522145632"}]}
+2017-05-25 23:05:09:{"outlet_list":[{"is_pharma_type":"1","category_id":"8","temp_id":"O101000525230459","in_charge":" ","id":"0","langitude":"90.4057","market_id":"10301","address":" ","isUpdated":"0","name":"rrrrr","user_id":"218","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01715080906"}]}
+2017-05-25 23:05:59:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"0","id":"10546","langitude":"90.4056","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-25 23:20:20:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","bonus_party_type":"0","id":"10546","langitude":"90.4057","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-25 23:23:47:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","in_charge":"null","bonus_party_type":"0","id":"10546","langitude":"90.4057","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7803","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-25 23:31:41:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"10546","in_charge":" ","bonus_party_type":"0","id":"10546","langitude":"90.4052","market_id":"10301","address":"","isUpdated":"1","name":"gs pharma","user_id":"218","latitude":"23.7787","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01879404888"}]}
+2017-05-26 00:08:53:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"O101000526000344","in_charge":"chh","id":"0","langitude":"90.4056","market_id":"10302","address":" ","isUpdated":"0","name":"fjjj","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01522147852"},{"is_pharma_type":"1","category_id":"7","temp_id":"O101000526000419","in_charge":" ","id":"0","langitude":"90.4055","market_id":"30347","address":" ","isUpdated":"1","name":"fjj","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01522145214"}]}
+2017-05-26 00:12:32:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"O101000526000419","in_charge":" ","id":"0","langitude":"90.4055","market_id":"30347","address":" ","isUpdated":"1","name":"fjj","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01522145214"}]}
+2017-05-26 18:56:31:{"outlet_list":[]}
+2017-05-27 13:35:31:{"outlet_list":[]}
+2017-05-27 14:23:15:{"outlet_list":[]}
+2017-05-27 17:39:35:{"outlet_list":[{"is_pharma_type":"1","category_id":"7","temp_id":"O101000527165750","in_charge":" ","id":"0","langitude":"90.4055","market_id":"30348","address":" ","isUpdated":"0","name":"grocery shop pharmacy ","user_id":"218","latitude":"23.7804","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01988888555"},{"is_pharma_type":"1","category_id":"11","temp_id":"O101000527173325","in_charge":" ","id":"0","langitude":"90.4057","market_id":"30349","address":" ","isUpdated":"0","name":"NGO pharmacy asd","user_id":"218","latitude":"23.7803","institute_id":"252","is_ngo_type":"1","telephone":" ","mobile":"01785669885"}]}
+2017-05-27 18:53:45:{"outlet_list":[]}
+2017-05-27 19:01:35:{"outlet_list":[]}
+2017-05-27 19:06:14:{"outlet_list":[]}
+2017-05-27 19:06:42:{"outlet_list":[]}
+2017-05-27 19:07:33:{"outlet_list":[]}
+2017-05-27 19:10:53:{"outlet_list":[]}
+2017-05-27 19:13:34:{"outlet_list":[]}
+2017-05-27 19:38:14:{"outlet_list":[]}
+2017-05-27 20:12:08:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"O201010527200618","in_charge":" ","bonus_party_type":"0","id":"0","langitude":"90.4058","market_id":"30350","address":" ","isUpdated":"0","name":"ngmp pharmacy ","user_id":"1219","latitude":"23.7803","institute_id":"","is_ngo_type":"0","telephone":" ","mobile":"01876764648"},{"is_pharma_type":"1","category_id":"11","temp_id":"O201010527200711","in_charge":" ","bonus_party_type":"0","id":"0","langitude":"90.4058","market_id":"30351","address":" ","isUpdated":"0","name":"NGO acme pharmacy ","user_id":"1219","latitude":"23.7803","institute_id":"7","is_ngo_type":"1","telephone":" ","mobile":"01988688009"}]}
+2017-05-27 20:26:03:{"outlet_list":[]}
+2017-05-27 20:29:28:{"outlet_list":[]}
+2017-05-27 20:32:18:{"outlet_list":[]}
+2017-05-27 20:37:50:{"outlet_list":[]}
+2017-05-27 20:52:17:{"outlet_list":[{"is_pharma_type":"1","category_id":"9","temp_id":"40695","in_charge":" ","bonus_party_type":"1","id":"40695","langitude":"90.4054","market_id":"30350","address":" ","isUpdated":"1","name":"ngmp pharmacy ","user_id":"1219","latitude":"23.7805","institute_id":"0","is_ngo_type":"0","telephone":" ","mobile":"01876764648"},{"is_pharma_type":"1","category_id":"11","temp_id":"40696","in_charge":" ","bonus_party_type":"2","id":"40696","langitude":"90.4058","market_id":"30351","address":" ","isUpdated":"1","name":"NGO acme pharmacy ","user_id":"1219","latitude":"23.7803","institute_id":"7","is_ngo_type":"1","telephone":" ","mobile":"01988688009"}]}
+2017-05-27 20:58:31:{"outlet_list":[]}
+2017-05-27 21:07:52:{"outlet_list":[]}
+2017-05-27 21:21:45:{"outlet_list":[]}
+2017-05-27 21:24:27:{"outlet_list":[]}
+2017-05-27 21:26:46:{"outlet_list":[]}
+2017-05-27 21:39:19:{"outlet_list":[]}
+2017-05-27 21:44:47:{"outlet_list":[]}
+2017-05-27 21:50:29:{"outlet_list":[]}
+2017-05-27 22:28:56:{"outlet_list":[]}
+2017-05-27 22:41:20:{"outlet_list":[]}
+2017-05-27 22:42:00:{"outlet_list":[]}
+2017-05-27 22:49:59:{"outlet_list":[]}
+2017-05-27 22:52:34:{"outlet_list":[]}
+2017-05-27 22:56:08:{"outlet_list":[]}
+2017-05-27 22:58:00:{"outlet_list":[]}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/xampp/htdocs/kda_new/app/Model/Location.php</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/View/Employees/admin_edit.ctp</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/View/SalarySheets/admin_index.ctp</file>
+            <file>file:/E:/xampp/htdocs/kda_new/lib/Cake/View/Helper/HtmlHelper.php</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/View/Employees/admin_add.ctp</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/View/EmployeeLoans/admin_add.ctp</file>
+            <file>file:/E:/xampp/htdocs/kda_new/lib/Cake/View/Helper/FormHelper.php</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/Controller/EmployeesController.php</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/Controller/SalarySheetsController.php</file>
+            <file>file:/E:/xampp/htdocs/kda_new/app/Controller/TaxSettingsController.php</file>
+        </group>
+    </open-files>
+</project-private>
