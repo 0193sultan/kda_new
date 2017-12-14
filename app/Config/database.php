@@ -97,8 +97,8 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		//'database' => 'kda9_db_with_july_2016',
-		'database' => 'kda_final_04_10',
+		'database' => 'kda9_db_with_july_2016',
+		//'database' => 'kda_final_04_10',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);

@@ -23,6 +23,11 @@ class ContructorBillPayment extends AppModel {
                 'rule' => array('notEmpty'),
             ),
         ),
+        'payment_type' => array(
+            'notEmpty' => array(
+                'rule' => array('notEmpty'),
+            ),
+        ),
         'contructor_name_id' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),

@@ -164,6 +164,7 @@ where contructor_advance_payments.work_order_id=$work_order_id And contructor_ad
     public function admin_add() {
         $this->set('page_title', 'Add Contructor bill payment');
         if ($this->request->is('post')) {
+            pr($this->request->data);die();
             $this->ContructorBillPayment->create();
             $this->request->data['ContructorBillPayment']['created_at'] = $this->current_datetime();
             $this->request->data['ContructorBillPayment']['user_id'] = $this->UserAuth->getUserId();

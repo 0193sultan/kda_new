@@ -1,3 +1,9 @@
+<style type="text/css">
+    #project_name,#work_order{
+        display: none;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
@@ -11,6 +17,11 @@
                 <?php echo $this->Form->create('ContructorBillPayment', array('role' => 'form')); ?>
                 <div class="form-group">
                     <?php
+                    echo $this->Form->input('payment_type', array('class' => 'form-control', 'id' => 'payment_type', 'options' => array(1 => 'Non Project Payment', 2 => 'Project Payment')));
+                    ?>
+                </div>
+                <div class="form-group" id="project_name">
+                    <?php
                     echo $this->Form->input('contructor_project_name_id', array('label' => 'Project Name', 'class' => 'form-control', 'id' => 'contructor_project_name_id', 'empty' => array('' => '------ Please Select ------')));
                     ?>
                 </div>
@@ -22,7 +33,7 @@
                 <!--                <div class="form-group">
                 <?php echo $this->Form->input('work_order_no', array('class' => 'form-control', 'id' => 'work_order_no_1', 'empty' => array('' => '------ Please Select ------'))); ?>
                                 </div>-->
-                <div class="form-group" >
+                <div class="form-group" id="work_order">
                     <?php echo $this->Form->input('work_order_id', array('id' => 'work_order_id', 'class' => 'form-control', 'empty' => array('' => '------ Please Select ------'))); ?>
                 </div>
                 <div class="form-group">
@@ -89,30 +100,6 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('payment_note', array('class' => 'form-control')); ?>
                 </div>
-
-                <script type="text/javascript">
-                    function net_pay_calculation() {
-
-                    }
-
-
-                    $(document).ready(function () {
-
-
-                    });
-                </script>
-
-
-                <!-- <div class="form-group">
-                <?php echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
-                </div>
-                <div class="form-group">
-                <?php echo $this->Form->input('created_at', array('class' => 'form-control')); ?>
-                </div>
-                <div class="form-group">
-                <?php echo $this->Form->input('updated_at', array('class' => 'form-control')); ?>
-                </div> -->
-
                 <?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
                 <?php echo $this->Form->end(); ?>
             </div>
@@ -161,6 +148,7 @@
                     data: {contructor_project_name_id: contructor_project_name_id, contructor_name_id: contructor_name_id},
                     success: function (result) {
                         result = $.parseJSON(result);
+                        console.log(result);
                         if (result.length != 0) {
                             var options = '<option >------ Please Select ------</option>'
                             for (var x in result) {
@@ -177,6 +165,18 @@
                 $('#work_order_id').html('');
             }
         }
+        $("body").on("change", "#payment_type", function () {
+            var payment_type = $(this).val();
+            if (payment_type == 1) {
+                $('#project_name,#work_order').hide();
+                $('#contructor_project_name_id,#work_order_id').prop('disabled', true);
+            } else {
+                $('#project_name,#work_order').show();
+                $("#project_name,#work_order").css("margin-bottom", "18px");
+                $('#contructor_project_name_id,#work_order_id').prop('disabled', false);
+            }
+        });
+
         $("body").on("change", "#work_order_id", function () {
             var work_order_id = $(this).val();
             var contructor_project_name_id = $('#contructor_project_name_id').val();
@@ -189,6 +189,7 @@
         });
         $("body").on("change", "#contructor_project_name_id", function () {
             var contructor_project_name_id = $(this).val();
+            console.log(contructor_project_name_id);
             var contructor_name_id = $('#contructor_name_id').val();
             var adjustMoney = $('#adjustMoney').val();
             get_workorder_no(contructor_project_name_id, contructor_name_id);
@@ -200,6 +201,7 @@
         $("body").on("change", "#contructor_name_id", function () {
             var contructor_project_name_id = $('#contructor_project_name_id').val();
             var contructor_name_id = $(this).val();
+            console.log(contructor_name_id);
             var adjustMoney = $('#adjustMoney').val();
             get_workorder_no(contructor_project_name_id, contructor_name_id);
             delay(function () {
@@ -207,9 +209,6 @@
             }, 1000);
             //console.log(contructor_project_name_id);
         });
-        var qty = $("#qty");
-        var vat = $("#vat");
-        var adjust = $('#adjustMoney');
         var vatAmount = 0;
         var taxAmount = 0;
         var moneyAmount = 0;
@@ -224,7 +223,36 @@
             };
         })();
 
+        // Calculation for Bill Amount
+        var qty = $("#qty");
+        var billAmount = qty.keyup(function () {
+            qtyValue = parseInt(this.value);
+            $('#contructor_project_name_id').val();
+            $("#total").val(qtyValue - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
+        });
 
+        // Calculation for Vat
+        var vat = $("#vat");
+        var vatCalculate = vat.keyup(function () {
+            vatAmount = (parseInt(billAmount.val()) * parseInt((vat).val())) / 100;
+            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
+        });
+
+        // Calculation for Tax
+        var tax = $("#tax");
+        var taxCalculate = tax.keyup(function () {
+            taxAmount = (parseInt(billAmount.val()) * parseInt((tax).val())) / 100;
+        });
+
+        // Calculation for Security Money
+        var money = $("#money");
+        var moneyCalculate = money.keyup(function () {
+            moneyAmount = (parseInt(billAmount.val()) * parseInt((money).val())) / 100
+            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount)));
+        });
+
+        // Calculation for Advance Adjustment
+        var adjust = $('#adjustMoney');
         var adjustCalculate = adjust.keyup(function () {
             adjustAmount = parseInt(adjust.val());
             delay(function () {
@@ -232,30 +260,6 @@
             }, 1000);
             $("#total").val(parseInt(qtyValue) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
 
-        });
-
-        var billAmount = qty.keyup(function () {
-            qtyValue = parseInt(this.value);
-            $('#contructor_project_name_id').val();
-            $("#total").val(qtyValue - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
-
-        });
-
-        //console.log(qtyValue);
-        var vatCalculate = vat.keyup(function () {
-            vatAmount = (parseInt(billAmount.val()) * parseInt((vat).val())) / 100;
-            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
-
-        });
-        var tax = $("#tax");
-        var taxCalculate = tax.keyup(function () {
-            taxAmount = (parseInt(billAmount.val()) * parseInt((tax).val())) / 100;
-        });
-
-        var money = $("#money");
-        var moneyCalculate = money.keyup(function () {
-            moneyAmount = (parseInt(billAmount.val()) * parseInt((money).val())) / 100
-            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount)));
         });
 
         var total = $("#total");

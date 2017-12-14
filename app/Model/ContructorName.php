@@ -47,22 +47,7 @@ class ContructorName extends AppModel {
             'allowEmpty' => false,
             'message' => 'Phone Number Must be Unique !',
         ),
-        'licence_no' => array(
-            'rule' => 'isUnique',
-            'allowEmpty' => false,
-            'message' => 'Licence No already Exist !',
-        ),
         'licence_category_id' => array(
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-            ),
-        ),
-        'licence_fee' => array(
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-            ),
-        ),
-        'enlisted_date' => array(
             'notEmpty' => array(
                 'rule' => array('notEmpty'),
             ),

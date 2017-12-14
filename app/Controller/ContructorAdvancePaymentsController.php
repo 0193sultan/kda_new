@@ -196,7 +196,8 @@ class ContructorAdvancePaymentsController extends AppController {
         if ($this->request->is('post')) {
             $this->loadModel('WorkOrder');
             $work_order_no = $this->WorkOrder->find('all', array('conditions' => array(
-                    'WorkOrder.id' => $this->request->data('work_order_id')
+                    'WorkOrder.contructor_project_name_id' => $this->request->data('contructor_project_name_id'),
+                    'WorkOrder.contructor_name_id' => $this->request->data('contructor_name_id')
                 ),
                 'fields' => 'WorkOrder.id,WorkOrder.work_order_no',
                 'order' => 'WorkOrder.id DESC',

@@ -38820,3 +38820,27 @@ Stack Trace:
 #14 E:\xampp\htdocs\kda_new\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #15 E:\xampp\htdocs\kda_new\app\webroot\index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #16 {main}
+2017-12-14 04:55:56 Error: [MissingTableException] Table project_types for model ProjectType was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'project_types',
+  'class' => 'ProjectType',
+  'ds' => 'default',
+)
+Request URL: /kda_new/admin/ContructorProjectNames
+Stack Trace:
+#0 E:\xampp\htdocs\kda_new\lib\Cake\Model\Model.php(3525): Model->setSource('project_types')
+#1 E:\xampp\htdocs\kda_new\lib\Cake\Model\Model.php(1365): Model->getDataSource()
+#2 E:\xampp\htdocs\kda_new\lib\Cake\Model\Datasource\DboSource.php(2494): Model->schema()
+#3 E:\xampp\htdocs\kda_new\lib\Cake\Model\Datasource\DboSource.php(1719): DboSource->fields(Object(ProjectType), 'ProjectType', '')
+#4 E:\xampp\htdocs\kda_new\lib\Cake\Model\Datasource\DboSource.php(1093): DboSource->generateAssociationQuery(Object(ContructorProjectName), Object(ProjectType), 'belongsTo', 'ProjectType', Array, Array, false)
+#5 E:\xampp\htdocs\kda_new\lib\Cake\Model\Model.php(2921): DboSource->read(Object(ContructorProjectName), Array)
+#6 E:\xampp\htdocs\kda_new\lib\Cake\Model\Model.php(2893): Model->_readDataSource('all', Array)
+#7 E:\xampp\htdocs\kda_new\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#8 E:\xampp\htdocs\kda_new\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate(NULL, Array, Array)
+#9 E:\xampp\htdocs\kda_new\app\Controller\ContructorProjectNamesController.php(27): Controller->paginate()
+#10 [internal function]: ContructorProjectNamesController->admin_index()
+#11 E:\xampp\htdocs\kda_new\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(ContructorProjectNamesController), Array)
+#12 E:\xampp\htdocs\kda_new\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#13 E:\xampp\htdocs\kda_new\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(ContructorProjectNamesController), Object(CakeRequest))
+#14 E:\xampp\htdocs\kda_new\app\webroot\index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#15 {main}
