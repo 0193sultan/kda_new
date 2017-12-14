@@ -164,7 +164,8 @@ where contructor_advance_payments.work_order_id=$work_order_id And contructor_ad
     public function admin_add() {
         $this->set('page_title', 'Add Contructor bill payment');
         if ($this->request->is('post')) {
-            pr($this->request->data);die();
+            pr($this->request->data);
+            die();
             $this->ContructorBillPayment->create();
             $this->request->data['ContructorBillPayment']['created_at'] = $this->current_datetime();
             $this->request->data['ContructorBillPayment']['user_id'] = $this->UserAuth->getUserId();
@@ -176,11 +177,6 @@ where contructor_advance_payments.work_order_id=$work_order_id And contructor_ad
             $this->request->data['ContructorBillPayment']['total_security_money_deducted'] = $this->total_security_money_deducted($contructorBillPayment['work_order_id'], $contructorBillPayment['contructor_project_name_id'], $contructorBillPayment['contructor_name_id'], $contructorBillPayment['security_money']);
             $this->request->data['ContructorBillPayment']['advance_adjustment_deduct'] = $this->advance_adjustment_deduct($contructorBillPayment['work_order_id'], $contructorBillPayment['contructor_project_name_id'], $contructorBillPayment['contructor_name_id'], $contructorBillPayment['advance_adjustment']);
             $this->request->data['ContructorBillPayment']['net_pay'] = $contructorBillPayment['bill_amount'] - ($contructorBillPayment['vat'] + $contructorBillPayment['tax'] + $contructorBillPayment['security_money']);
-
-
-            // pr($this->request->data);
-            // die();
-
             if ($this->ContructorBillPayment->save($this->request->data)) {
                 $this->Session->setFlash(__('The contructor bill payment has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'index'));
@@ -191,13 +187,16 @@ where contructor_advance_payments.work_order_id=$work_order_id And contructor_ad
         }
 
         $this->loadModel('ContructorProjectName');
+        $this->loadModel('BankInfo');
         $contructorProjectNames = $this->ContructorProjectName->find('list');
         $this->loadModel('ContructorName');
         $contructorNames = $this->ContructorName->find('list');
         $this->loadModel('FiscalYear');
         $fiscalYears = $this->FiscalYear->find('list');
         $users = $this->ContructorBillPayment->User->find('list');
-        $this->set(compact('contructorProjectNames', 'contructorNames', 'fiscalYears', 'users', 'workOrderId'));
+
+        $bankInfos = $this->BankInfo->find('list');
+        $this->set(compact('contructorProjectNames', 'contructorNames', 'fiscalYears', 'users', 'workOrderId','bankInfos'));
     }
 
     /**

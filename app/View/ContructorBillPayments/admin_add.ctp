@@ -37,10 +37,19 @@
                     <?php echo $this->Form->input('work_order_id', array('id' => 'work_order_id', 'class' => 'form-control', 'empty' => array('' => '------ Please Select ------'))); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('bill_amount', array('class' => 'form-control', 'id' => 'qty', 'type' => 'number')); ?>
+                    <?php echo $this->Form->input('bill_amount', array('class' => 'form-control', 'id' => 'bill_amount', 'type' => 'number')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('voucher_no', array('class' => 'form-control')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('check_no', array('class' => 'form-control')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('bank_info_id', array('class' => 'form-control bank_id', 'empty' => '---- Please Select ----')); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('bank_account_id', array('class' => 'form-control account_no', 'empty' => '---- Please Select ----')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
@@ -115,6 +124,23 @@
 </script>
 <script>
     $(document).ready(function () {
+        function account_no(bank_id) {
+            $.ajax({
+                url: '<?php echo BASE_URL . 'admin/DailyTransactions/get_account_no' ?>',
+                'type': 'POST',
+                data: {bank_id: bank_id},
+                success: function (response) {
+                    console.log(response);
+                    var obj = jQuery.parseJSON(response);
+                    $('.account_no option').remove();
+                    for (var i = 0; i < obj.length; i++) {
+                        optionList = '<option value="' + obj[i].BankAccount.id + '">' + obj[i].BankAccount.name + '</option>';
+                        $('.account_no').append(optionList);
+                    }
+                }
+            });
+        }
+
         function check_bill_amount(contructor_project_name_id, contructor_name_id, work_order_id, adjustAmount) {
             if (contructor_project_name_id != '' && contructor_name_id != '' && work_order_id != '' && adjustAmount != '') {
                 $.ajax({
@@ -209,6 +235,11 @@
             }, 1000);
             //console.log(contructor_project_name_id);
         });
+        $('body').on("change", ".bank_id", function () {
+            var bank_id = $('.bank_id').val();
+            account_no(bank_id);
+            $('.account_no').html('<option value="">---- Please Select ----</option>');
+        });
         var vatAmount = 0;
         var taxAmount = 0;
         var moneyAmount = 0;
@@ -224,8 +255,8 @@
         })();
 
         // Calculation for Bill Amount
-        var qty = $("#qty");
-        var billAmount = qty.keyup(function () {
+        var bill_amount = $("#bill_amount");
+        var billAmount = bill_amount.keyup(function () {
             qtyValue = parseInt(this.value);
             $('#contructor_project_name_id').val();
             $("#total").val(qtyValue - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
@@ -242,13 +273,14 @@
         var tax = $("#tax");
         var taxCalculate = tax.keyup(function () {
             taxAmount = (parseInt(billAmount.val()) * parseInt((tax).val())) / 100;
+            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
         });
 
         // Calculation for Security Money
         var money = $("#money");
         var moneyCalculate = money.keyup(function () {
             moneyAmount = (parseInt(billAmount.val()) * parseInt((money).val())) / 100
-            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount)));
+            $("#total").val(parseInt(billAmount.val()) - (parseInt(vatAmount) + parseInt(taxAmount) + parseInt(moneyAmount) + parseInt(adjustAmount)));
         });
 
         // Calculation for Advance Adjustment
