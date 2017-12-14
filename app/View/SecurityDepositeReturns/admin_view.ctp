@@ -30,6 +30,11 @@
 			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['security_return_amount']); ?>
 			&nbsp;
 		</td>
+</tr><tr>		<td><strong><?php echo __('Total Security Money Paid'); ?></strong></td>
+		<td>
+			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['total_security_money_paid']); ?>
+			&nbsp;
+		</td>
 </tr><tr>		<td><strong><?php echo __('Voucher No'); ?></strong></td>
 		<td>
 			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['voucher_no']); ?>
@@ -48,21 +53,6 @@
 </tr><tr>		<td><strong><?php echo __('Payment Note'); ?></strong></td>
 		<td>
 			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['payment_note']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('User'); ?></strong></td>
-		<td>
-			<?php echo $this->Html->link($securityDepositeReturn['User']['name'], array('controller' => 'users', 'action' => 'view', $securityDepositeReturn['User']['id']), array('class' => '')); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Created At'); ?></strong></td>
-		<td>
-			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['created_at']); ?>
-			&nbsp;
-		</td>
-</tr><tr>		<td><strong><?php echo __('Updated At'); ?></strong></td>
-		<td>
-			<?php echo h($securityDepositeReturn['SecurityDepositeReturn']['updated_at']); ?>
 			&nbsp;
 		</td>
 </tr>					</tbody>

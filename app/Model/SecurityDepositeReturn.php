@@ -9,13 +9,6 @@ App::uses('AppModel', 'Model');
  */
 class SecurityDepositeReturn extends AppModel {
 
-/**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'security_deposite_return';
-
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -35,13 +28,6 @@ class SecurityDepositeReturn extends AppModel {
 		'FiscalYear' => array(
 			'className' => 'FiscalYear',
 			'foreignKey' => 'fiscal_year_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

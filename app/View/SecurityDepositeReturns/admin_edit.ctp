@@ -9,7 +9,7 @@
 			</div>
 			<div class="box-body">		
 			<?php echo $this->Form->create('SecurityDepositeReturn', array('role' => 'form')); ?>
-					<div class="form-group">
+										<div class="form-group">
 						<?php echo $this->Form->input('id', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
@@ -22,18 +22,21 @@
 						<?php echo $this->Form->input('security_return_amount', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
+						<?php echo $this->Form->input('total_security_money_paid', array('class' => 'form-control')); ?>
+					</div>
+					<div class="form-group">
 						<?php echo $this->Form->input('voucher_no', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
- 						<?php echo $this->Form->input('payment_date', array('type' => 'text','class' => 'form-control datepicker','required' => true)); ?>
+						<?php echo $this->Form->input('payment_date', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('payment_note', array('class' => 'form-control')); ?>
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
 						<?php echo $this->Form->input('user_id', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
@@ -41,7 +44,7 @@
 					</div>
 					<div class="form-group">
 						<?php echo $this->Form->input('updated_at', array('class' => 'form-control')); ?>
-					</div> -->
+					</div>
 
 				<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
 			<?php echo $this->Form->end(); ?>

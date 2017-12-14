@@ -2,43 +2,31 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header">
-                <h3 class="box-title"><i class="glyphicon glyphicon-edit"></i>  <?php echo __('Admin Add Security Deposite Return'); ?></h3>
+                <h3 class="box-title"><i class="glyphicon glyphicon-edit"></i>  <?php echo __('Admin Add Security Deposit Return'); ?></h3>
                 <div class="box-tools pull-right">
-                    <?php echo $this->Html->link(__('<i class="glyphicon glyphicon-th-large"></i> Security Deposite Return List'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false)); ?>
+                    <?php echo $this->Html->link(__('<i class="glyphicon glyphicon-th-large"></i> Security Deposit Return List'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false)); ?>
                 </div>
             </div>
             <div class="box-body">
                 <?php echo $this->Form->create('SecurityDepositeReturn', array('role' => 'form')); ?>
-                <div class="form-group" style="display: none" >
-                    <?php echo $this->Form->input('work_order_id_1', array('id' => 'work_order_id_1', 'class' => 'form-control', 'label' => false)); ?>
+                <div class="form-group">
+                    <?php echo $this->Form->input('contructor_project_name_id', array('label' => 'Project Name :', 'class' => 'form-control contructor_project_name', 'empty'=>'---- Please Select ----')); ?>
                 </div>
                 <div class="form-group">
-                    <?php
-                    $project_list = array('--Select--') + $contructor_project_name;
-                    echo $this->Form->input('contructor_project_name_id', array('label' => 'Project Name', 'class' => 'form-control', 'options' => $project_list, 'id' => 'contructor_project_name'));
-                    ?>
+                    <?php echo $this->Form->input('contructor_name_id', array('class' => 'form-control contructor_name', 'empty'=>'---- Please Select ----')); ?>
                 </div>
                 <div class="form-group">
-                    <?php
-                    $contructor_list = array('--Select--') + $contructor_name;
-                    echo $this->Form->input('contructor_name_id', array('label' => 'Contructor Name', 'class' => 'form-control', 'options' => $contructor_list, 'id' => 'contructor_name'));
-                    ?>
+                    <?php echo $this->Form->input('work_order_id', array('label' => 'Work Order No :', 'class' => 'form-control work_order_id', 'empty'=>'---- Please Select ----', 'required')); ?>
+                    <?php echo $this->Form->input('work_order_no', array('type'=>'hidden', 'class'=>'work_order_no')); ?>
                 </div>
                 <div class="form-group">
-                    <label>Work order No:</label>
-                    <select id="work_order_no_1" name="work_order_no_1" class="form-control">
-                        <option>please select</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <?php echo $this->Form->input('security_return_amount', array('class' => 'form-control show', 'class' => 'form-control')); ?>
-                    <span class="text-danger" id="erros"></span>
+                    <?php echo $this->Form->input('security_return_amount', array('class' => 'form-control show', 'class' => 'form-control', 'required')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('voucher_no', array('class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control', 'empty'=>'---- Please Select ----', 'required')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datepicker', 'required' => true)); ?>
@@ -53,85 +41,48 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    var base_url = "<?php echo BASE_URL; ?>";
-    $(document).ready(function () {
-        $('#contructor_name').change(function () {
-            var contructor_project_name_id = $("#contructor_project_name option:selected").val();
-            var contructor_name_id = $("#contructor_name option:selected").val();
-            $.ajax({
-                url: base_url + "admin/ContructorAdvancePayments/get_call",
-                method: "POST",
-                data: {contructor_project_name_id: contructor_project_name_id, contructor_name_id: contructor_name_id},
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    for (i = 0; i < data.length; i++) {
-                        //console.log(data[i]['WorkOrder']['work_order_no']);
-                        $("#work_order_no_1").append('<option value='+data[i]['WorkOrder']['id']+'>' + data[i]['WorkOrder']['work_order_no'] + '</option>');
-                    }
-                }
-            });
-        });
 
-    });
-
-
-    $(document).ready(function () {
-        $('#work_order_no_1').change(function () {
-            var work_order_id = $(this).val();
-           console.log(work_order_id);
-            $.ajax({
-                url: base_url + "admin/ContructorAdvancePayments/get_workorder_no",
-                method: "POST",
-                data: {work_order_id: work_order_id},
-                dataType: "json",
-                success: function (data) {
-                    console.log(data[0]['WorkOrder']['work_order_no']);
-                   // console.log(data[0]['WorkOrder']['id']);
-                    $('#work_order_id_1').val(data[0]['WorkOrder']['work_order_no']);
-                }
-            });
-        });
-
-    });
-
-</script>
-<script type="text/javascript">
-    var base_url = "<?php echo BASE_URL; ?>";
-    $(document).ready(function () {
-        $('.show').keyup(function () {
-            var security_input = $(".show").val();
-            var work_order_id = $("#work_order_id").val();
-            $.ajax({
-                url: base_url + "SecurityDepositeReturns/check_amount",
-                method: "POST",
-                data: {security_input: security_input, work_order_id: work_order_id},
-                dataType: "json",
-                success: function (data) {
-                    var total_security_money_deducted = data[1]['ContructorBillPayment']['total_security_money_deducted'];
-                    if (data[0].length !== 0) {
-                        var total_security_money_paid = data[0]['SecurityDepositeReturn']['total_security_money_paid'];
-                    }
-                    var remaining_security_money = total_security_money_deducted - total_security_money_paid;
-                    if (security_input > remaining_security_money) {
-                        $("#erros").html("You have " + remaining_security_money + " remaining security return deposite");
-                    } else {
-                        $("#erros").html(" ");
-                    }
-
-                }
-            });
-        });
-    });
-
-
-
-
-
-</script>
 <script>
-    $(document).ready(function () {
-        $('#display-none').hide();
+    $(document).ready(function(){
+        $('body').on('change', '.contructor_project_name', function(){
+            $('.work_order_id').html('<option value="">---- Please Select ----</option>');
+            var contructor_project_name_id = $(this).val();
+             $.ajax({
+                      url: '<?php echo BASE_URL.'admin/SecurityDepositeReturns/get_contructor_name_list' ?>',
+                      'type': 'POST',
+                      data: {contructor_project_name_id: contructor_project_name_id},
+                      success: function(response){
+                         var obj = jQuery.parseJSON(response);
+                         $('.contructor_name option').remove();
+                         for (var i = 0; i < obj.length; i++) {
+                            optionList = '<option value="'+obj[i].WorkOrder.id+'">'+obj[i].ContructorName.name+'</option>';
+                            $('.contructor_name').append(optionList);
+                         }
+                      }
+                   });
+        });
+
+        $('body').on('change', '.contructor_name', function(){
+            var contructor_project_name_id = $('.contructor_project_name').val();
+            var contructor_name_id = $(this).val();
+             $.ajax({
+                      url: '<?php echo BASE_URL.'admin/SecurityDepositeReturns/get_work_order_no_list' ?>',
+                      'type': 'POST',
+                      data: {contructor_project_name_id: contructor_project_name_id,contructor_name_id: contructor_name_id},
+                      success: function(response){
+                         var obj = jQuery.parseJSON(response);
+                         $('.work_order_id option').remove();
+                         for (var i = 0; i < obj.length; i++) {
+                            optionList = '<option value="'+obj[i].WorkOrder.id+'">'+obj[i].WorkOrder.name+'</option>';
+                            $('.work_order_id').append(optionList);
+                         }
+                      }
+                   });
+        });
+
+        $('body').on('change', '.work_order_id', function(){
+            var work_order_no = $(this).find(':selected').text();
+            $('.work_order_no').val(work_order_no);
+        });
     });
 </script>
