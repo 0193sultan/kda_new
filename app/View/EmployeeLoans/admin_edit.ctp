@@ -21,7 +21,7 @@
                     </thead>
                     <tbody>
                         <?php
-                
+
                         $dprtmnt = array(0 => 'select');
                         foreach ($department as $key => $value) {
                             $dprtmnt["$key"] = $value;
@@ -96,7 +96,7 @@
                 </div>
 
                 <script type="text/javascript">
-                    
+
                       $(document).ready(function(){
                             $("#EmployeeLoanNumberOfInstallment").keyup(function(){
                                 loan_amount = $('#EmployeeLoanLoanAmount').val();
@@ -124,12 +124,30 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('recovery_year_id', array('options' => $FiscalYear, 'class' => array('form-control'))); ?>
                 </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('first_installment_amount', array('type' => 'text', 'required' => true, 'class' => array('form-control'))); ?>
+                </div>
 
-             
+                <div class="form-group">
+                    <?php echo $this->Form->input('first_installment_date', array('type' => 'text', 'required' => true, 'class' => array('form-control', 'datepicker'))); ?>
+                </div>
+
+                <div class="form-group">
+                    <?php echo $this->Form->input('second_installment_amount', array('type' => 'text', 'class' => array('form-control'))); ?>
+                </div>
+
+                <div class="form-group">
+                    <?php echo $this->Form->input('second_installment_date', array('type' => 'text', 'class' => array('form-control', 'datepicker'))); ?>
+                </div>
+
+                <div class="form-group">
+                    <?php echo $this->Form->input('current_due', array('type' => 'text', 'required' => true, 'class' => array('form-control'))); ?>
+                </div>
+
                 <div class="form-group">
                     <!-- <?php echo $this->Form->input('status', array('class' => 'form-control')); ?> -->
                     <?php
-                    $roles = array('0' => 'Active', '1' => 'Inactive');
+                    $roles = array('1' => 'Active', '0' => 'Inactive');
                     echo $this->Form->input('status', array(
                         'options' => $roles,
                         'class' => 'form-control',

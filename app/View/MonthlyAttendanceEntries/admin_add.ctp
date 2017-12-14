@@ -1,252 +1,250 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<style type="text/css">
-		.u157_input {
 
-			left: 0px;
-			top: 0px;
-			width: 100px;
-			height: 22px;
-			font-family: 'Arial Regular', 'Arial';
-			font-weight: 400;
-			font-style: normal;
-			font-size: 13px;
-			text-decoration: none;
-			color: #000000;
-		}
-		select, select[size="0"], select[size="1"] {
-			border-radius: 0px;
-			border-color: rgb(169, 169, 169);
-		}
-		.u135_input {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			width: 72px;
-			height: 25px;
-			font-family: 'Arial Regular', 'Arial';
-			font-weight: 400;
-			font-style: normal;
-			font-size: 13px;
-			text-decoration: none;
-			color: #000000;
-			text-align: left;
-		}
-		
-	</style>
-</head>
-<body style="margin-top: 15px;">
-	<div class="col-md-12">
-		<span class="col-md-1" ><a href="" style="text-decoration: none;">Home</a></span>
-		<div class="col-md-4 btn btn-default">
-			<h4 style="color: black;">Khulna Development Authority&nbsp; ( KDA )</h4>
-		</div>
-	</div>
+<style type="text/css">
+    .select_width {
+        width: 100%;
+    }
+    .u135_input {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 72px;
+        height: 25px;
+        font-family: 'Arial Regular', 'Arial';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 13px;
+        text-decoration: none;
+        color: #000000;
+        text-align: left;
+    }
 
+</style>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title"><i class="glyphicon glyphicon-edit"></i>  <?php echo __('Monthly Attendance Entry'); ?></h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <?php echo $this->Form->create('MonthlyAttendanceEntry', array('role' => 'form')); ?>
 
-	<div class="col-md-offset-1 col-md-6" style="margin-top: 20px;">
-		
-		<table class="table" border="1px;">
-			<thead style="background-color: #999999;">
-				<th>Department Name</th>
-				<th>Designation</th>
-				<th>Employee Name</th>
-				<th>Fisal Year</th>
-				<th>Month</th>
-			</thead>			
-			<tbody>
-				<td>
-					<select class="u157_input" id="department_name">
-						<option>select</option>
-						<?php 
+                    <div class="col-md-offset-1 col-md-10" style="margin-top: 20px;">
+                        <div class="table-responsive">
+                            <table class="table  table-bordered">
+                                <thead>
 
-						if(!empty($department)) 
-						
-						{
-						 
-							foreach($department as $key=>$row)
-							{
-								echo "<option value='$key'>$row</option>";
-							}
+                                    <tr class="active">
+                                        <th>Department Name</th>
+                                        <th>Designation</th>
+                                        <th>Emp. Name</th>
+                                        <th>Fiscal Year</th>
+                                        <th>Month</th>
+                                        <th>Entry Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <?php echo $this->Form->input('departments', array('id' => 'department_name', 'label' => false, 'class' => 'form-control select_width', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $this->Form->input('designations', array('id' => 'designation', 'label' => false, 'class' => 'form-control select_width', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $this->Form->input('employee_id', array('id' => 'name', 'label' => false, 'class' => 'form-control select_width', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                        <td style="width:180px">
+                                            <?php echo $this->Form->input('fiscal_year_id', array('id' => 'fiscal_year', 'label' => false, 'class' => 'form-control', 'style' => 'width:90%', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                        <td style="width:180px">
+                                            <?php echo $this->Form->input('month_id', array('id' => 'month', 'label' => false, 'class' => 'form-control', 'style' => 'width:90%', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                        <td style="width:180px">
+                                            <?php echo $this->Form->input('monthly_attendance_entry_type_id', array('label' => false, 'class' => 'form-control', 'style' => 'width:90%', 'empty' => array('' => '------ Please Select ------'))); ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-						}
+            <!-- <p id="c"></p> -->
+                    </div>
 
-						?>
-					</select>
-				</td>
-				<td>
-					<select class="u157_input" id="designation">
-						<option>select</option>
-						<?php 
+                    <div class="col-md-offset-1 col-md-11">
+                        <h3>Attendance Entry</h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Employee Name</th>
+                                        <th>Official Attendance</th>
+                                        <th>Casual Leave</th>
+                                        <th>Sick Leave</th>
+                                        <th>Earned Leave</th>
+                                        <th>Maternity leave</th>
+                                        <th>Total Attendance</th>
+                                        <th>Penalty</th>
+                                        <th>New Basic</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="emName"></td>
+                                        <td><?php echo $this->Form->input('official_attendence', array('type' => 'number', 'id' => 'official_attendence', 'label' => false, 'class' => 'form-control select_width', 'value' => 0)); ?>
+                                        </td>
+                                        <td><?php echo $this->Form->input('casual_leave', array('type' => 'number', 'id' => 'leave', 'label' => false, 'class' => 'form-control select_width leave', 'value' => 0)); ?>
+                                        </td>
+                                        <td><?php echo $this->Form->input('sick_leave', array('type' => 'number','label' => false, 'class' => 'form-control select_width leave', 'value' => 0)); ?></td>
+                                        <td><?php echo $this->Form->input('earned_leave', array('type' => 'number','label' => false, 'class' => 'form-control select_width leave', 'value' => 0)); ?></td>
+                                        <td><?php echo $this->Form->input('maternity_leave', array('type' => 'number','label' => false, 'class' => 'form-control select_width leave', 'value' => 0)); ?></td>
+                                        <td><?php echo $this->Form->input('total_attendance', array('type' => 'number', 'id' => 'total_attendance','label' => false, 'class' => 'form-control select_width', 'value' => 0)); ?></td>
+                                        <td><?php echo $this->Form->input('panalty', array('type' => 'number','label' => false, 'class' => 'form-control select_width', 'value' => 0)); ?></td>
+                                        <td><?php echo $this->Form->input('new_basic', array('label' => false, 'class' => 'form-control select_width', 'value' => 0)); ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br><br>
+                        <?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
+                    </div>
+                    <?php echo $this->Form->end(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-						if(!empty($designation)) 
-						
-						{
-						 
-							foreach($designation as $key=>$row)
-							{
-								echo "<option value='$key'>$row</option>";
-							}
+<script type="text/javascript">
 
-						}
+    $('#month').change(function () {
+        var fiscal_year_id = $('#fiscal_year option:selected').val();
+        var month_id = $('#month option:selected').val();
+        if (fiscal_year_id != '' && month_id != '') {
+            get_working_days(fiscal_year_id, month_id);
+        }
 
-						?>
-					</select>
-				</td>
-				<td>
-					<select class="u157_input" id="name">
-						<option>select</option> <!-- ajax generate remain option -->
-					</select>
-				</td>
-				<td>
-					<select class="u157_input" id="fiscal_year">
-						<option>select</option>
-						<?php 
+    });
+    $('#fiscal_year').change(function () {
+        var fiscal_year_id = $('#fiscal_year option:selected').val();
+        var month_id = $('#month option:selected').val();
+        if (fiscal_year_id != '' && month_id != 'select') {
+            get_working_days(fiscal_year_id, month_id);
+        }
+    });
+    //console.log('individualjjjj_total_qty');
+    $(".leave").keyup(function () {
 
-						if(!empty($fiscalyear)) 
-						
-						{
-						 
-							foreach($fiscalyear as $key=>$row)
-							{
-								echo "<option value='$key'>$row</option>";
-							}
+        var individual_total_qty = 0;
+        $('.leave').each(function () {
+            individual_total_qty = parseInt(individual_total_qty) + parseInt($(this).val());
+        });
+        console.log(individual_total_qty);
+        var official_attendence = $('#official_attendence').val();
+        if (official_attendence != 0) {
+            $("#total_attendance").val(official_attendence - individual_total_qty);
+        }
+    });
 
-						}
+    function get_working_days(fiscal_year_id, month_id) {
 
-						?>
-					</select>
-				</td>
-				<td>
-					<select class="u157_input" id="month">
-						<option>select</option> <!-- ajax generate remain option -->
-					</select>
-				</td>
-			</tbody>
-		</table>
-		
-		<!-- js code for onclick -->
+        // var parseGradeName = parseInt(gradeName);
+        // console.log(gradeName);
+        $.ajax({
+            url: '<?php echo BASE_URL ?>admin/MonthlyAttendanceEntries/get_official_attendance',
+            type: 'POST',
+            data: {fiscal_year_id: fiscal_year_id, month_id: month_id},
+            success: function (result) {
+                //result = $.parseJSON(result);
+                if (result != 0) {
+                    $('#official_attendence').val(result);
+                } else {
+                    $('#official_attendence').val(0);
+                }
 
-		<script type="text/javascript">
-		    var base_url = "<?php echo BASE_URL; ?>";
-			$(document).ready(function(){
-				$('#designation').change(function(){
-					var department_name = $("#department_name option:selected").val();
-					var designation = $("#designation option:selected").val();
-					var employee = $("#employee option:selected").val();
-
-					 	$.ajax({
-					 		url: base_url+"MonthlyAttendanceEntries/get_call",
-					 		method:"POST",
-					 		data:{department_name : department_name,designation : designation,employee : employee},
-					 		dataType:"text",
-					 		success:function(data){
-					 			$('#name').html(data);
-					 		}
-					 	});
-
-				});
-
-				//***************************************
-				//fiscal year ajax code start here
-				//***************************************
-
-				$('#fiscal_year').change(function(){
-					var fiscal_year = $("#fiscal_year option:selected").val();
-					 	$.ajax({
-					 		url: base_url+"MonthlyAttendanceEntries/get_months",
-					 		method:"POST",
-					 		data:{fiscal_year : fiscal_year},
-					 		dataType:"text",
-					 		success:function(data){
-					 			$('#month').html(data);
-					 		}
-					 	});
-
-				});
-
-				//**********************************************
-				//moth ajax code start here 
-				//**********************************************
-
-				$('#month').change(function(){
-					var month = $("#month option:selected").val();
-					$('#month_id').val(month); //for set it to hiddden input 
-					 	$.ajax({
-					 		url: base_url+"MonthlyAttendanceEntries/attendance_entry_autoComplete",
-					 		method:"POST",
-					 		data:{month : month},
-					 		dataType:"text",
-					 		success:function(data){
-					 			$('#official_attendence').val(data);
-					 			//$('#c').html(data);
-					 		}
-					 	});
-
-				});
-
-				//*******************************************
-				//Auto complete Name field 
-				//*******************************************
-				$('#name').change(function(){
-					var name_id = $("#name option:selected").val();
-					var name = $("#name option:selected").html();
-					$('#emName').html(name);
-					$('#employee_id').val(name_id);
-
-				});
+                //  console.log(individual_total_qty);
+                /*if (result != '') {
+                 $('#official_attendence').val(result[0].MobileBillSetting.mobile_bill);                   //console.log(result);
+                 } else {
+                 $('#EmployeeAllowanceMobile').val(0);
+                 }*/
+            }
+        });
+    }
 
 
+    var base_url = "<?php echo BASE_URL; ?>";
+    $(document).ready(function () {
+        $('#designation').change(function () {
+            var department_name = $("#department_name option:selected").val();
+            var designation = $("#designation option:selected").val();
+            var employee = $("#employee option:selected").val();
 
-			}); 
+            $.ajax({
+                url: base_url + "MonthlyAttendanceEntries/get_call",
+                method: "POST",
+                data: {department_name: department_name, designation: designation, employee: employee},
+                dataType: "text",
+                success: function (data) {
+                    $('#name').html(data);
+                }
+            });
 
-		</script>
-		<!-- End js code for onclick -->
-		<!-- <p id="c"></p> -->
-	</div>
+        });
 
-	<div class="col-md-offset-1 col-md-10" style="margin-top: 20px;">
-	<p class="">Attendance Entry</p>
-		<form method="post" action="<?php echo BASE_URL."MonthlyAttendanceEntries/form_data"; ?>">
-			<table class="table" border="1px;">
-				<thead style="background-color: #999999;">
-					<!-- <th><input type="checkbox" name="" ></th> -->
-					<th>Employee Name</th>
-					<th>Official Attendance</th>
-					<th>Casual Leave</th>
-					<th>Sick Leave</th>
-					<th>Earned Leave</th>
-					<th>Maternity leave</th>
-					<th>Total Attandance</th>
-					<th>Panalty</th>
-				</thead>
-				<tbody>
-					<!-- <td><input type="checkbox" name="" ></td> -->
-					<td id="emName">
-					
-					</td>
-					<td><input type="number" name="official_attendence" style="width: 82px;" id="official_attendence"  value=""></td>
-					<td><input type="number" name="casual_leave" style="width: 82px;"></td>
-					<td><input type="number" name="sick_leave" style="width: 82px;"></td>
-					<td><input type="number" name="earned_leave" style="width: 82px;"></td>
-					<td><input type="number" name="maternity_leave" style="width: 82px;"></td>
-					<td><input type="number" name="total_attendance" style="width: 82px;"></td>
-					<td><input type="number" name="panalty" style="width: 82px;"> TK.</td>
+        //***************************************
+        //fiscal year ajax code start here
+        //***************************************
 
-				</tbody>
-			</table>
-			<input type="hidden" name="employee_id" id="employee_id">
-			<input type="hidden" name="month_id" id="month_id">
-			<input type="hidden" name="datetime" value="<?php echo date("Y-m-d"); ?>">
-			<input type="submit" name="btn" value="Save" class="col-md-offset-1 btn btn-default" style="width: 90px;">
-		</form>
-	</div>
+        $('#fiscal_year').change(function () {
+            var fiscal_year = $("#fiscal_year option:selected").val();
+            $.ajax({
+                url: base_url + "MonthlyAttendanceEntries/get_months",
+                method: "POST",
+                data: {fiscal_year: fiscal_year},
+                dataType: "text",
+                success: function (data) {
+                    $('#month').html(data);
+                }
+            });
 
-	<!-- loading js -->
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+        });
+
+        //**********************************************
+        //moth ajax code start here
+        //**********************************************
+
+        //                    $('#month').change(function () {
+        //                        var month = $("#month option:selected").val();
+        //                        $('#month_id').val(month); //for set it to hiddden input
+        //                        $.ajax({
+        //                            url: base_url + "MonthlyAttendanceEntries/attendance_entry_autoComplete",
+        //                            method: "POST",
+        //                            data: {month: month},
+        //                            dataType: "text",
+        //                            success: function (data) {
+        //                                $('#official_attendence').val(data);
+        //                                //$('#c').html(data);
+        //                            }
+        //                        });
+        //
+        //                    });
+
+        //*******************************************
+        //Auto complete Name field
+        //*******************************************
+        $('#name').change(function () {
+            var name_id = $("#name option:selected").val();
+            var name = $("#name option:selected").html();
+            $('#emName').html(name);
+            $('#employee_id').val(name_id);
+
+        });
+
+
+
+    });
+
+</script>
+<!-- End js code for onclick -->

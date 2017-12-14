@@ -34,7 +34,7 @@
 						<?php echo $this->Form->input('bank_info_id', array('class' => 'form-control')); ?>
 					</div>
 					<div class="form-group">
-						<?php echo $this->Form->input('date', array('class' => 'form-control')); ?>
+						<?php echo $this->Form->input('date', array('class' => 'form-control datepicker')); ?>
 					</div>
 
 				<?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>

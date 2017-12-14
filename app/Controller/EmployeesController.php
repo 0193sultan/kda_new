@@ -115,7 +115,6 @@ class EmployeesController extends AppController {
             echo count($checkDataHas);
             if (count($checkDataHas) == 0) {
                 $this->loadModel('Scale');
-
                 //pr($grade_scale);
                 // pr($this->request->data);
                 //die();
@@ -213,7 +212,7 @@ class EmployeesController extends AppController {
             $this->request->data['Employee']['date_of_birth'] = date('Y-m-d', strtotime($this->request->data['Employee']['date_of_birth']));
             $this->request->data['Employee']['joining_date'] = date('Y-m-d', strtotime($this->request->data['Employee']['joining_date']));
             //pr($this->request->data);
-            // die();
+            //die();
             if ($this->Employee->save($this->request->data)) {
                 $file = $this->request->data['EmployeeChild']['file'];
                 $this->loadModel('EmployeeChild');

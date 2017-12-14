@@ -26,6 +26,13 @@
         margin-left: 0px;
         padding-left: 0px;
     }
+    .a{
+        display: none;
+    }
+
+    .b{
+        display: inline;
+    }
 </style>
 <?php
 //pr($employeeData);
@@ -45,7 +52,7 @@
             </div>
             <div class="box-body">
                 <?php
-                echo $this->Form->create('salarysheets', array('role' => 'form'));
+                echo $this->Form->create('DueSalarySheets', array('role' => 'form'));
                 // pr($fiscalYearData);
                 ?>
                 <div  class="row">
@@ -56,7 +63,7 @@
                                 <td><?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control grade', 'label' => false, 'style' => 'width:200px', 'options' => array('' => 'Select Year', $fiscalYearData))); ?></td>
                                 <td><h5 class="box-title">&nbsp;&nbsp;&nbsp;&nbsp;Month :</h5></td>
                                 <td><?php echo $this->Form->input('month_id', array('class' => 'form-control grade', 'label' => false, 'style' => 'width:200px')); ?></td>
-                                <!--<td><?php //echo $this->Form->input('salary_types', array('class' => 'form-control', 'label' => false, 'style' => 'width:200px', 'default' => '31', 'options' => array('' => 'Select Salary Type', $salaryTypes)));       ?></td>-->
+                                <!--<td><?php //echo $this->Form->input('salary_types', array('class' => 'form-control', 'label' => false, 'style' => 'width:200px', 'default' => '31', 'options' => array('' => 'Select Salary Type', $salaryTypes)));             ?></td>-->
                             </tr>
                         </table>
                         <br>
@@ -66,7 +73,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th  style="width:10px"><?php
+                                <th  ><?php
                                     // echo $this->Form->checkbox('foo',array('id' => 'test1','onClick' => 'refresh_current_page()'));
                                     // echo $this->Form->input('', array('legend' => false, 'style' => 'width: 10px; opacity:0;height:2px;z-index:50'));
                                     //echo $this->Form->submit('button', array('class' => 'btn btn-large btn-primary'));
@@ -74,7 +81,14 @@
                                     // echo $this->Form->input('o'); //is hidden initially
                                     ?>
 
-                                    <p id="test1">gggg</p>
+                                    <?=
+                                    $this->Html->image('chek-1.png', array('id' => 'p1', 'class' =>
+                                        'test ','style'=>'width:25px;height:25px'));
+                                    ?>
+                                    <?=
+                                    $this->Html->image('chek-2.png', array('id' => 'p2', 'class' =>
+                                        'test a','style'=>'width:25px;height:25px'));
+                                    ?>
                                    <!-- <input type="checkbox"  id="test1" >-->
 
 
@@ -90,20 +104,20 @@
                         <tbody>
                             <?php
                             // pr($employeeData);
-                            foreach ($employeeData as $key => $employee) {
-                                $emp_id = $employee['Employee']['id'];
+                           // foreach ($employeeData as $key => $employee) {
+                               // $emp_id = $employee['Employee']['id'];
                                 ?>
                                 <tr>
-                                    <th scope="row"><?php echo $this->Form->input('', array('name' => "employee_id[$emp_id]", 'class' => 'form-control check_all', 'label' => false, 'type' => 'checkbox'/* , 'checked' */)); ?></th>
-                                    <td><?php echo $employee['Employee']['name'] ?></td>
-                                    <td><?php echo $employee['Department']['name'] ?></td>
-                                    <td><?php echo $employee['Designation']['name'] ?></td>
-                                    <td><?php echo $employee['Scale']['grade_basic'] ?></td>
-                                    <td><?php echo $employee['Employee']['employeeID'] ?></td>
-                                    <td><?php echo $employee['Employee']['present_address'] ?></td>
+                                    <th scope="row"><?php //echo $this->Form->input('', array('name' => "employee_id[$emp_id]", 'class' => 'form-control check_all', 'label' => false, 'type' => 'checkbox'/* , 'checked' */)); ?></th>
+                                    <td><?php //echo $employee['Employee']['name'] ?></td>
+                                    <td><?php //echo $employee['Department']['name'] ?></td>
+                                    <td><?php //echo $employee['Designation']['name'] ?></td>
+                                    <td><?php //echo $employee['Scale']['grade_basic'] ?></td>
+                                    <td><?php //echo $employee['Employee']['employeeID'] ?></td>
+                                    <td><?php //echo $employee['Employee']['present_address'] ?></td>
                                 </tr>
                                 <?php
-                            }
+                           // }
                             ?>
                         </tbody>
                     </table>
@@ -118,19 +132,25 @@
 </div>
 <script>
 
-                                        $(document).ready(function () {
-                                            $('#test1').click(function(){
-                                                $('.icheckbox_minimal').toggleClass('checked');
-                                            });
-                                            //$('#test1').on('ifChecked', function (event) {
-                                                //alert(event.type + ' callback');
-                                                console.log(event.type + ' callback');
-                                                //console.log('kkk');
-                                                //$('.check_all').iCheck();
-                                                //$('.icheckbox_minimal').toggleClass('checked');
-                                           // });
-                                        });
+    $(document).ready(function () {
+        $('.test').click(function () {
+            $('.icheckbox_minimal').toggleClass('checked');
+            $('#p1').toggleClass('a');
+            $('#p2').toggleClass('a');
+        });
 
+
+        $('#test1').click(function () {
+            $('.icheckbox_minimal').toggleClass('checked');
+        });
+        //$('#test1').on('ifChecked', function (event) {
+        //alert(event.type + ' callback');
+        console.log(event.type + ' callback');
+        //console.log('kkk');
+        //$('.check_all').iCheck();
+        //$('.icheckbox_minimal').toggleClass('checked');
+        // });
+    });
     $('#salarysheetsFiscalYearId').change(function () {
         var yearId = $(this).val();
         //console.log(yearId);

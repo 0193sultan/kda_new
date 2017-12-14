@@ -10,7 +10,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
-class LoanRecoveriesController extends AppController {
+class LoanRecoveriesWithJoinController extends AppController {
 
     /**
      * Components

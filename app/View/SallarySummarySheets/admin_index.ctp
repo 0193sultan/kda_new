@@ -13,6 +13,8 @@ foreach ($salarySheets as $v)
 	}
 }
 
+$total = $total + $EmployeeBonus[0][0]['bonus_amount'];
+
 
 ?>
 
@@ -103,62 +105,69 @@ foreach ($salarySheets as $v)
  	<tr>
  		<td>P.P</td>
  		<td><?=$salarySheets[0][0]['pp']; ?></td>
- 		<td>Medical</td>
- 		<td><?=$salarySheets[0][0]['medical']; ?></td>
+ 		<td>CPF Subscription</td>
+ 		<td><?='0.00'; ?></td>
  	</tr>
 
  	<tr>
- 		<td>HRent</td>
- 		<td><?=$salarySheets[0][0]['house_rent']; ?></td>
+ 		<td>Medical</td>
+ 		<td><?=$salarySheets[0][0]['medical']; ?></td>
  		<td>House recovery</td>
  		<td><?=$salarySheets[0][0]['house_loan_recovery']; ?></td>
  	</tr>
 
  	<tr>
- 		<td>Tiffin</td>
- 		<td><?=$salarySheets[0][0]['tiffin']; ?></td>
+ 		<td>Cycle</td>
+ 		<td><?=$salarySheets[0][0]['cycle']; ?></td>
  		<td>Vehicle</td>
  		<td><?=$salarySheets[0][0]['vechcale_recovery']; ?></td>
  	</tr>
 
  	<tr>
+ 		<td>HRent</td>
+ 		<td><?=$salarySheets[0][0]['house_rent']; ?></td>
+ 		<td>Telephone</td>
+ 		<td><?=$salarySheets[0][0]['telephone_recovery']; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td>Tiffin</td>
+ 		<td><?=$salarySheets[0][0]['tiffin']; ?></td>
+ 		<td>G.P.F Loan</td>
+ 		<td><?=$salarySheets[0][0]['gpf_loan']; ?></td>
+ 	</tr>
+
+ 	<tr>
  		<td>Education</td>
  		<td><?=$salarySheets[0][0]['education']; ?></td>
- 		<td>Telephone</td>
- 		<td><?=$salarySheets[0][0]['telephone_allowance']; ?></td>
+ 		<td>Motor cycle Adv</td>
+ 		<td><?=$salarySheets[0][0]['motorcycle_loan']; ?></td>
  	</tr>
 
  	<tr>
  		<td>Charges</td>
  		<td><?=$salarySheets[0][0]['charge']; ?></td>
- 		<td>Bycycle Loan</td>
+ 		<td>Cycle Adv</td>
  		<td><?=$salarySheets[0][0]['bicycle_loan']; ?></td>
  	</tr>
 
  	<tr>
  		<td>Convence</td>
  		<td><?=$salarySheets[0][0]['convance']; ?></td>
- 		<td>Motor cycle Adv</td>
- 		<td><?=$salarySheets[0][0]['bicycle_loan']; ?></td>
- 	</tr>
-
- 	<tr>
- 		<td>Washing</td>
- 		<td><?=$salarySheets[0][0]['wash']; ?></td>
  		<td>House building Adv</td>
  		<td><?=$salarySheets[0][0]['house_build_recovery']; ?></td>
  	</tr>
 
  	<tr>
- 		<td>Mobile</td>
- 		<td><?=$salarySheets[0][0]['mobile']; ?></td>
+ 		<td>Washing</td>
+ 		<td><?=$salarySheets[0][0]['wash']; ?></td>
  		<td>House repair Adv</td>
  		<td><?=$salarySheets[0][0]['house_repair_reovery']; ?></td>
  	</tr>
 
  	<tr>
- 		<td>D.A</td>
- 		<td><?=$salarySheets[0][0]['da']; ?></td>
+ 		<td>Mobile</td>
+ 		<td><?=$salarySheets[0][0]['mobile']; ?></td>
  		<td>Computer loan</td>
  		<td><?=$salarySheets[0][0]['computer_loan']; ?></td>
  	</tr>
@@ -171,23 +180,37 @@ foreach ($salarySheets as $v)
  	</tr>
 
  	<tr>
- 		<td>New Basic Salary</td>
- 		<td><?=$salarySheets[0][0]['new_basic_salary']; ?></td>
+ 		<td>Day A</td>
+ 		<td><?=$salarySheets[0][0]['da']; ?></td>
+ 		<td>Loan8</td>
+ 		<td><?=0; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td>Bonus</td>
+ 		<td><?= $EmployeeBonus[0][0]['bonus_amount']; ?> </td>
+ 		<td>Loan9</td>
+ 		<td><?=0; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td></td>
+ 		<td></td>
  		<td>Electricity</td>
  		<td><?=$salarySheets[0][0]['electricity_recovery']; ?></td>
  	</tr>
 
  	<tr>
- 		<td>Gross Pay</td>
- 		<td><?=$salarySheets[0][0]['gross_pay']; ?></td>
- 		<td>Water supply</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td>Water Sup</td>
  		<td><?=$salarySheets[0][0]['water_supply_recovery']; ?></td>
  	</tr>
 
  	<tr>
- 		<td>Total Payable</td>
- 		<td><?=$salarySheets[0][0]['total_payable']; ?></td>
- 		<td>Fix House rent</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td>Fixed House rent</td>
  		<td><?=$salarySheets[0][0]['fixed_house_rent_recovery']; ?></td>
  	</tr>
 
@@ -195,28 +218,7 @@ foreach ($salarySheets as $v)
  		<td></td>
  		<td></td>
  		<td>Group Insurance</td>
- 		<td><?=$salarySheets[0][0]['group_insurance']; ?></td>
- 	</tr>
-
- 	<tr>
- 		<td></td>
- 		<td></td>
- 		<td>BF</td>
- 		<td><?=$salarySheets[0][0]['bf_recovery']; ?></td>
- 	</tr>
-
- 	<tr>
- 		<td></td>
- 		<td></td>
- 		<td>Tin Shed</td>
- 		<td><?=$salarySheets[0][0]['tin_shade_recovery']; ?></td>
- 	</tr>
-
- 	<tr>
- 		<td></td>
- 		<td></td>
- 		<td>GI Recovery</td>
- 		<td><?=$salarySheets[0][0]['gi_recovery']; ?></td>
+ 		<td><?=$salarySheets[0][0]['group_insurance_sum']; ?></td>
  	</tr>
 
  	<tr>
@@ -229,16 +231,48 @@ foreach ($salarySheets as $v)
  	<tr>
  		<td></td>
  		<td></td>
- 		<td>Extra Loan</td>
- 		<td><?=$salarySheets[0][0]['extra_loan']; ?></td>
+ 		<td>Benevolent Fund</td>
+ 		<td><?=$salarySheets[0][0]['bf_recovery']; ?></td>
  	</tr>
-
 
  	<tr>
  		<td></td>
- 		<td>Grand Total =</td>
- 		<td><?=$total; ?></td>
  		<td></td>
+ 		<td>Others Sub</td>
+ 		<td><?=$salarySheets[0][0]['other_sub']; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td></td>
+ 		<td></td>
+ 		<td>Tin Shed</td>
+ 		<td><?=$salarySheets[0][0]['tin_shade_recovery']; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td></td>
+ 		<td></td>
+ 		<td>Penalty</td>
+ 		<td></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td></td>
+ 		<td></td>
+ 		<td>Tax</td>
+ 		<td><?=$salarySheets[0][0]['tax']; ?></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td><strong class="pull-right">Total :</strong></td>
+ 		<td><strong class="total_allowance"><?=$salarySheets[0][0]['gross_pay']; ?></strong></td>
+ 		<td><strong class="pull-right">Total :</strong></td>
+ 		<td><strong class="total_recovery"><?=$salarySheets[0][0]['total_payable']; ?></strong></td>
+ 	</tr>
+
+ 	<tr>
+ 		<td><strong class="pull-right">Net Pay :</strong></td>
+ 		<td colspan="3"><strong><span class="total_net_pay"></span>&nbsp;TK&nbsp;(<span class="net_pay_words"></span>)&nbsp;Only</strong></td>
  	</tr>
 
 </table>
@@ -253,3 +287,21 @@ foreach ($salarySheets as $v)
 </script>
 
 <?php } ?>
+
+<script>
+	$(document).ready(function(){
+		var total_net_pay = parseFloat($('.total_allowance').text())-parseFloat($('.total_recovery').text());
+		$('.total_net_pay').text(total_net_pay);
+
+		$('.net_pay_words').text(toWords(total_net_pay));
+	});
+
+var th = ['','thousand','million', 'billion','trillion'];
+var dg = ['zero','one','two','three','four', 'five','six','seven','eight','nine']; 
+var tn = ['ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen', 'seventeen','eighteen','nineteen']; 
+var tw = ['twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety']; 
+
+function toWords(s){s = s.toString(); s = s.replace(/[\, ]/g,''); if (s != parseFloat(s)) return 'not a number'; var x = s.indexOf('.'); if (x == -1) x = s.length; if (x > 15) return 'too big'; var n = s.split(''); var str = ''; var sk = 0; for (var i=0; i < x; i++) {if ((x-i)%3==2) {if (n[i] == '1') {str += tn[Number(n[i+1])] + ' '; i++; sk=1;} else if (n[i]!=0) {str += tw[n[i]-2] + ' ';sk=1;}} else if (n[i]!=0) {str += dg[n[i]] +' '; if ((x-i)%3==0) str += 'hundred ';sk=1;} if ((x-i)%3==1) {if (sk) str += th[(x-i-1)/3] + ' ';sk=0;}} if (x != s.length) {var y = s.length; str += 'point '; for (var i=x+1; i<y; i++) str += dg[n[i]] +' ';} return str.replace(/\s+/g,' ');}
+
+</script>
+

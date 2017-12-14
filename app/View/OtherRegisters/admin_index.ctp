@@ -95,12 +95,16 @@ if ($type == "BF") {
             </thead>
 
             <tbody>
-                <?php foreach ($res as $v): ?>
+                <?php
+
+                                   // pr($res);
+
+                foreach ($res as $v): ?>
                     <tr>
                         <td>
 
                             <?php
-                            $id = $v['EmployeeSalarySheet']['employee_id'];
+                            $id = isset($v['EmployeeSalarySheet']['employee_id'])?$v['EmployeeSalarySheet']['employee_id']:$v['GpfSubscription']['employee_id'];
                             $data = $obj->get_name_designation_byId($id);
                             //pr($data);
 
@@ -111,7 +115,7 @@ if ($type == "BF") {
                         </td>
                         <td><?= $data[0]['Designation']['name']; ?></td>
                         <td><?= $type; ?></td>
-                        <td><?= $v[0]['ttl']; ?></td>
+                        <td><?= isset($v[0]['ttl'])?$v[0]['ttl']:$v['GpfSubscription']['ttl']; ?></td>
                         <td>
                             <a href="<?php echo BASE_URL . 'admin/OtherRegisters/details/' . $id . '/' . $var ?>"><span class="btn btn-primary">Details</span></a>
                         </td>

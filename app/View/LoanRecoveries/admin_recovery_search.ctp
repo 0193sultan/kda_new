@@ -148,21 +148,21 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                         <tr>
                             <th class="text-center">Employee Name(Designation)</th>
                             <th class="text-center">Loan Name</th>
-                            <!--<th class="text-center">Loan Type</th>-->
+                            <th class="text-center">Loan Type</th>
                             <th class="text-center">Loan Starting Date</th>
                             <th class="text-center">Interest Rate</th>
                             <th class="text-center">Total Loan Amount</th>
-                            <th class="text-center">Interest Amount</th>
                             <th class="text-center">Recovery Loan</th>
-                            <th class="text-center">Due Loan</th>
                             <th class="text-center">Status</th>
+                            <th class="text-center">Due Loan</th>
                             <th width="120" class="text-center"><?php echo __('Actions'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
+                                                      //  pr($res);
                         foreach ($res as $loanRecovery):
-                            //pr($loanRecovery);
+
                             $id = $loanRecovery['EmployeeLoan']['id'];
 
                             $rcvry_qnqty = $obj->ttl_recovery_by_employeeLoanId($id);
@@ -178,9 +178,9 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                         <?php echo h($loanRecovery['Loan']['name']); ?>
                                     </td>
 
-                                    <!--<td class="text-center">
-                                        <?php //echo h($loanRecovery['LoanType']['name']); ?>
-                                    </td>-->
+                                    <td class="text-center">
+                                        <?php echo h($loanRecovery['LoanType']['name']); ?>
+                                    </td>
 
                                     <td class="text-center">
                                         <?php echo h($loanRecovery['EmployeeLoan']['loan_approved_date']); ?>
@@ -193,9 +193,7 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                     <td class="text-center">
                                         <?php echo h($loanRecovery['EmployeeLoan']['loan_amount']); ?>
                                     </td>
-                                    <td class="text-center">
-                                        <?php echo h($loanRecovery['EmployeeLoan']['interest_amount']); ?>
-                                    </td>
+
                                     <td class="text-center">
                                         <?php
                                         $amnt = $loanRecovery['EmployeeLoan']['installment_amount'] * $rcvry_qnqty;
@@ -203,22 +201,23 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                         echo $amnt;
                                         ?>
                                     </td>
+
+                                    <td class="text-center">
+                                        <?php
+                                        if ($loanRecovery['EmployeeLoan']['status'] == 1) {
+                                            echo "Active";
+                                        } else if ($loanRecovery['EmployeeLoan']['status'] == 0) {
+                                            echo "InActive";
+                                        }
+                                        ?>
+                                    </td>
+
                                     <td class="text-center">
                                         <?php
                                         $due = $loanRecovery['EmployeeLoan']['loan_amount'] - $amnt;
                                         echo $due;
                                         ?>
                                     </td>
-                                    <td class="text-center">
-                                        <?php
-                                        if ($loanRecovery['EmployeeLoan']['status'] == 0) {
-                                            echo "Active";
-                                        } else if ($loanRecovery['EmployeeLoan']['status'] == 1) {
-                                            echo "InActive";
-                                        }
-                                        ?>
-                                    </td>
-
                                     <td class="text-center">
                                         <a href="<?php echo BASE_URL . "admin/loanrecoveries/loan_recovery_details/" . $loanRecovery['EmployeeLoan']['id']; ?>"><span class="btn btn-primary">Details</span></a>
                                     </td>

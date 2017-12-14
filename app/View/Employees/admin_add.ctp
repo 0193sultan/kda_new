@@ -21,6 +21,9 @@
         padding: 5px;
         margin-left: 10px;
     }
+    #parentTag{
+        display: none;
+    }
 </style>
 
 <div class="row">
@@ -64,8 +67,8 @@
                                         <td><?php echo $this->Form->input('joining_date', array('class' => 'form-control datepicker', 'type' => 'text', 'label' => false)); ?></td>
                                     </tr>
                                     <tr>
-                                       <!-- <td><?php //echo $this->Form->label('basic_id', 'Current Basic :');             ?></td>
-                                        <td><?php //echo $this->Form->input('basic_id', array('class' => 'form-control basic_id', 'label' => false, 'options' => array('' => 'Select Grade Year First')));             ?></td>-->
+                                       <!-- <td><?php //echo $this->Form->label('basic_id', 'Current Basic :');                                   ?></td>
+                                        <td><?php //echo $this->Form->input('basic_id', array('class' => 'form-control basic_id', 'label' => false, 'options' => array('' => 'Select Grade Year First')));                                   ?></td>-->
                                         <td><?php echo $this->Form->label('department_id', 'Department :'); ?></td>
                                         <td><?php echo $this->Form->input('department_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select Department'))); ?></td>
                                         <td><?php echo $this->Form->label('employee_type_id', 'Employee Type :'); ?></td>
@@ -113,8 +116,8 @@
                                         <td><?php echo $this->Form->label('child_number', 'Child Number :'); ?></td>
                                         <td>
                                             <?php
-                                            echo $this->Form->input('child_number', array('class' => 'form-control',
-                                                'id' => 'child-no',
+                                            echo $this->Form->input('child_number', array('class' => 'form-control child_number',
+                                                //'id' => 'child-no',
                                                 'label' => false,
                                                 'options' => array("none", 1, 2)
                                                     )
@@ -131,10 +134,12 @@
                                     <tr>
                                         <td><?php echo $this->Form->label('contact_no', 'Contact No :'); ?></td>
                                         <td><?php echo $this->Form->input('contact_no', array('class' => 'form-control', 'label' => false)); ?></td>
+                                        <td><?php echo $this->Form->label('festival_recovery', 'Festival Recovery :'); ?></td>
+                                        <td><?php echo $this->Form->input('festival_recovery', array('class' => 'form-control', 'label' => false, 'options' => array("No", 'Yes'))); ?></td>
                                     </tr>
-                                    <?php //echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary'));  ?>
+                                    <?php //echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary'));   ?>
                                 </tbody>
-                                <?php //echo $this->Form->end('save post');  ?>
+                                <?php //echo $this->Form->end('save post');   ?>
                             </table>
                         </div>
                     </div>
@@ -154,7 +159,7 @@
                                     </tr>
                                     <tr>
                                         <td><?php echo $this->Form->label('EmployeeChild.edu_status_id', '1st Child Education Status :'); ?></td>
-                                        <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]')); ?></td>
+                                        <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control edu_status_1', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]')); ?></td>
                                     </tr>
                                     <tr>
                                         <td><?php echo $this->Form->label('EmployeeChild.file', '1st Child Birth Cirtificate :'); ?></td>
@@ -174,7 +179,7 @@
                                     </tr>
                                     <tr>
                                         <td><?php echo $this->Form->label('EmployeeChild.edu_status_id', '2nd Child Education Status :'); ?></td>
-                                        <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]')); ?></td>
+                                        <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control edu_status_2', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]')); ?></td>
                                     </tr>
                                     <tr>
                                         <td><?php echo $this->Form->label('EmployeeChild.file', '2nd Child Birth Cirtificate :'); ?></td>
@@ -278,25 +283,33 @@
                     $('#EmployeeRecoveryGi').val(0)
                 }
             });
-            $('#parentTag').hide();
-            $('#child-no').change(function () {
-                var childNumber = $('#child-no option:selected').val();
-                if (childNumber == 0) {
-                    $('#parentTag').hide();
-                } else if (childNumber == 1) {
-                    $('#parentTag').show();
-                    $('#child1').show();
-                    $('#child2').hide();
-                } else {
-                    $('#parentTag').show();
-                    $('#child2').show();
-                }
-                getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber);
+            $(".edu_status").change(function () {
 
+            })
+            //$('#parentTag').hide();
 
+            $(".child_number").change(function () {
+                var childNumber = $(this).val();
+                var edu_status_1 = $(".edu_status_1 option:selected").val();
+                var edu_status_2 = $(".edu_status_2 option:selected").val();
+                getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
+            });
+            $(".edu_status_1").change(function () {
+                var edu_status_1 = $(this).val();
+                var childNumber = $(".child_number option:selected").val();
+                var edu_status_2 = $(".edu_status_2 option:selected").val();
+                getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
+            });
+            $(".edu_status_2").change(function () {
+                var edu_status_2 = $(this).val();
+                var childNumber = $(".child_number option:selected").val();
+                var edu_status_1 = $(".edu_status_1 option:selected").val();
+                getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
             });
 
+
             $('#EmployeeLivingStatusId').change(function () {
+                //console.log('jjj');
                 get_water_bills();
                 house_rent();
             });
@@ -396,16 +409,38 @@
             });
         }
 
-        function getedu(metaKey, id, childNumber) {
+        function getedu(metaKey, id, childNumber, edu_status_1, edu_status_2) {
             $.ajax({
                 url: '<?php echo BASE_URL ?>admin/Apis/getmeta/' + metaKey,
                 type: 'POST',
                 data: {},
                 success: function (result) {
-                    //result = $.parseJSON(result);
-                    //console.log(childNumber);
-                    //console.log(result);
-                    $(id).val(result * childNumber);
+                    if (childNumber == 0) {
+                        $(id).val(result * 0);
+                        $('#parentTag').hide();
+                    } else if (childNumber == 1) {
+                        if (edu_status_1 == 1) {
+                            $(id).val(result * 1);
+                        } else if (edu_status_1 == 2) {
+                            $(id).val(result * 0);
+                        }
+                        $('#parentTag').show();
+                        $('#child1').show();
+                        $('#child2').hide();
+                    } else if (childNumber == 2) {
+                        if (edu_status_1 == 1 && edu_status_2 == 1) {
+                            $(id).val(result * 2);
+                        } else if (edu_status_1 == 1 && edu_status_2 == 2) {
+                            $(id).val(result * 1);
+                        } else if (edu_status_1 == 2 && edu_status_2 == 1) {
+                            $(id).val(result * 1);
+                        } else if (edu_status_1 == 2 && edu_status_2 == 2) {
+                            $(id).val(result * 0);
+                        }
+                        $('#parentTag').show();
+                        $('#child1').show();
+                        $('#child2').show();
+                    }
                 }
             });
         }
@@ -433,7 +468,7 @@
                     }
                 });
             } else {
-            $('#EmployeeAllowanceHouseRent').val(0);
+                $('#EmployeeAllowanceHouseRent').val(0);
             }
         }
 

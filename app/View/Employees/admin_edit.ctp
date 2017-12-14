@@ -72,8 +72,8 @@
                                 </tr>
 
                                 <tr>
-                                   <!-- <td><?php //echo $this->Form->label('basic_id', 'Current Basic :');                   ?></td>
-                                    <td><?php //echo $this->Form->input('basic_id', array('class' => 'form-control basic_id', 'label' => false, 'options' => array('' => 'Select Grade Year First')));                   ?></td>-->
+                                   <!-- <td><?php //echo $this->Form->label('basic_id', 'Current Basic :');                      ?></td>
+                                    <td><?php //echo $this->Form->input('basic_id', array('class' => 'form-control basic_id', 'label' => false, 'options' => array('' => 'Select Grade Year First')));                      ?></td>-->
                                     <td><?php echo $this->Form->label('department_id', 'Department :'); ?></td>
                                     <td><?php echo $this->Form->input('department_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select Department'))); ?></td>
                                     <td><?php echo $this->Form->label('employee_type_id', 'Employee Type :'); ?></td>
@@ -92,6 +92,12 @@
                                     <td><?php echo $this->Form->input('bank_info_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select Bank Name'))); ?></td>
                                 </tr>
                                 <tr>
+                                    <td><?php echo $this->Form->label('religion_id', 'Religion :'); ?></td>
+                                    <td><?php echo $this->Form->input('religion_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select Religion'))); ?></td>
+                                    <td><?php echo $this->Form->label('account_number', 'Account Number :'); ?></td>
+                                    <td><?php echo $this->Form->input('account_number', array('class' => 'form-control', 'label' => false)); ?></td>
+                                </tr>
+                                <tr>
                                     <td><?php echo $this->Form->label('location_id', 'location Name :'); ?></td>
                                     <td><?php echo $this->Form->input('location_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select location'))); ?></td>
                                     <td><?php echo $this->Form->label('sex_id', 'Sex :'); ?></td>
@@ -99,11 +105,16 @@
 
                                 </tr>
                                 <tr>
+                                    <td><?php echo $this->Form->label('fathers_name', 'Father\'s Name :'); ?></td>
+                                    <td><?php echo $this->Form->input('fathers_name', array('class' => 'form-control', 'label' => false)); ?></td>
                                     <td><?php echo $this->Form->label('marital_status_id', 'Marital Status :'); ?></td>
                                     <td><?php echo $this->Form->input('marital_status_id', array('class' => 'form-control', 'label' => false, 'empty' => array(0 => 'Please Select Marital Status'))); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo $this->Form->label('mothers_name', 'Mother\'s Name :'); ?></td>
+                                    <td><?php echo $this->Form->input('mothers_name', array('class' => 'form-control', 'label' => false)); ?></td>
                                     <td><?php echo $this->Form->label('spouse_name', 'Spouse Name :'); ?></td>
                                     <td><?php echo $this->Form->input('spouse_name', array('class' => 'form-control', 'label' => false)); ?></td>
-
                                 </tr>
                                 <tr>
                                     <td><?php echo $this->Form->label('present_address', 'Present Address :'); ?></td>
@@ -117,7 +128,7 @@
                                     <td><?php echo $this->Form->label('child_number', 'Child Number :'); ?></td>
                                     <td>
                                         <?php
-                                        echo $this->Form->input('child_number', array('class' => 'form-control',
+                                        echo $this->Form->input('child_number', array('class' => 'form-control child_number',
                                             'id' => 'child-no',
                                             'label' => false,
                                             'options' => array("none", 1, 2)
@@ -129,6 +140,8 @@
                                 <tr>
                                     <td><?php echo $this->Form->label('contact_no', 'Contact No :'); ?></td>
                                     <td><?php echo $this->Form->input('contact_no', array('class' => 'form-control', 'label' => false)); ?></td>
+                                    <td><?php echo $this->Form->label('festival_recovery', 'Festival Recovery :'); ?></td>
+                                    <td><?php echo $this->Form->input('festival_recovery', array('class' => 'form-control', 'label' => false, 'options' => array("No", 'Yes'))); ?></td>
                                 </tr>
                                 <?php //echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary'));  ?>
                             </tbody>
@@ -173,7 +186,7 @@
                                 </tr>
                                 <tr>
                                     <td><?php echo $this->Form->label('edu_status_id', '1st Child Education Status :'); ?></td>
-                                    <td><?php echo $this->Form->input('edu_status_id', array('class' => 'form-control', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]', 'options' => $eduStatuses, 'default' => $edu_status_id[0])); ?></td>
+                                    <td><?php echo $this->Form->input('edu_status_id', array('class' => 'form-control edu_status_1', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]', 'options' => $eduStatuses, 'default' => $edu_status_id[0])); ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $this->Form->label('file', '1st Child Birth Cirtificate :'); ?></td>
@@ -195,7 +208,7 @@
                                 </tr>
                                 <tr>
                                     <td><?php echo $this->Form->label('EmployeeChild.edu_status_id', '2nd Child Education Status :'); ?></td>
-                                    <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]', 'default' => $edu_status_id[1])); ?></td>
+                                    <td><?php echo $this->Form->input('EmployeeChild.edu_status_id', array('class' => 'form-control edu_status_2', 'label' => false, 'name' => 'data[EmployeeChild][edu_status_id][]', 'default' => $edu_status_id[1])); ?></td>
                                 </tr>
                                 <tr>
                                     <td><?php echo $this->Form->label('EmployeeChild.file', '2nd Child Birth Cirtificate :'); ?></td>
@@ -233,7 +246,7 @@
                                     <td><?php echo $this->Form->input('EmployeeAllowance.tiffin', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
                                     <td><?php echo $this->Form->input('EmployeeAllowance.wash', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
                                     <td><?php echo $this->Form->input('EmployeeAllowance.mobile', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
-                                    <td><?php echo $this->Form->input('EmployeeAllowance.cycle', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;', 'value' => '0')); ?></td>
+                                    <td><?php echo $this->Form->input('EmployeeAllowance.cycle', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
                                     <td><?php echo $this->Form->input('EmployeeAllowance.da', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
                                     <td><div class="input-group"><?php echo $this->Form->input('EmployeeAllowance.charges', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?><span class="input-group-addon fix_charges_per">%</span></td>
                                     <td><?php echo $this->Form->input('EmployeeAllowance.others', array('class' => 'form-control', 'label' => false, 'style' => 'margin-left: 5px;')); ?></td>
@@ -318,28 +331,25 @@
             }
         });
 
-        // console.log(childNumber);
-        function child_number(childNumber) {
-            if (childNumber == 0) {
-                $('#parentTag').hide();
-            } else if (childNumber == 1) {
-                $('#parentTag').show();
-                $('#child1').show();
-                $('#child2').hide();
-            } else {
-                $('#parentTag').show();
-                $('#child2').show();
-            }
-            getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber);
-        }
-        child_number($('#child-no option:selected').val());
-        // $('#parentTag').hide();
-        $('#child-no').change(function () {
-            var childNumber = $('#child-no option:selected').val();
-            child_number(childNumber);
-            getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber);
+        $('#parentTag').hide();
 
-
+        $(".child_number").change(function () {
+            var childNumber = $(this).val();
+            var edu_status_1 = $(".edu_status_1 option:selected").val();
+            var edu_status_2 = $(".edu_status_2 option:selected").val();
+            getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
+        });
+        $(".edu_status_1").change(function () {
+            var edu_status_1 = $(this).val();
+            var childNumber = $(".child_number option:selected").val();
+            var edu_status_2 = $(".edu_status_2 option:selected").val();
+            getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
+        });
+        $(".edu_status_2").change(function () {
+            var edu_status_2 = $(this).val();
+            var childNumber = $(".child_number option:selected").val();
+            var edu_status_1 = $(".edu_status_1 option:selected").val();
+            getedu('allowance_education', '#EmployeeAllowanceEducation', childNumber, edu_status_1, edu_status_2);
         });
 
         $('#EmployeeLivingStatusId').change(function () {
@@ -449,20 +459,44 @@
         });
     }
 
-    function getedu(metaKey, id, childNumber) {
+    function getedu(metaKey, id, childNumber, edu_status_1, edu_status_2) {
         $.ajax({
             url: '<?php echo BASE_URL ?>admin/Apis/getmeta/' + metaKey,
             type: 'POST',
             data: {},
             success: function (result) {
-                //result = $.parseJSON(result);
-                //console.log(childNumber);
                 //console.log(result);
-                $(id).val(result * childNumber);
+                if (childNumber == 0) {
+                    $(id).val(result * 0);
+                    $('#parentTag').hide();
+                } else if (childNumber == 1) {
+                    if (edu_status_1 == 1) {
+                        $(id).val(result * 1);
+                    } else if (edu_status_1 == 2) {
+                        $(id).val(result * 0);
+                    }
+                    $('#parentTag').show();
+                    $('#child1').show();
+                    $('#child2').hide();
+                } else if (childNumber == 2) {
+                    console.log(edu_status_1);
+                    console.log(edu_status_2);
+                    if (edu_status_1 == 1 && edu_status_2 == 1) {
+                        $(id).val(result * 2);
+                    } else if (edu_status_1 == 1 && edu_status_2 == 2) {
+                        $(id).val(result * 1);
+                    } else if (edu_status_1 == 2 && edu_status_2 == 1) {
+                        $(id).val(result * 1);
+                    } else if (edu_status_1 == 2 && edu_status_2 == 2) {
+                        $(id).val(result * 0);
+                    }
+                    $('#parentTag').show();
+                    $('#child1').show();
+                    $('#child2').show();
+                }
             }
         });
     }
-
 
     function house_rent() {
         var location = $('#EmployeeLocationId option:selected').val();
@@ -533,7 +567,7 @@ $('.fix_gpf').on('ifClicked', function (event) {
 $('.grade').change(function(){
 var grade=$(this).val();
 $.ajax({
-    url:'<?php //echo BASE_URL                 ?>admin/employees/get_increment_list',
+    url:'<?php //echo BASE_URL                    ?>admin/employees/get_increment_list',
     type:'POST',
     data:{grade_id:grade},
     success:function(result){

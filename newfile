@@ -1,0 +1,287 @@
+            // $emp_info = array();
+            // $emp_info=[];
+            //pr($emp_data);die();
+            foreach ($emp_data['employee_id'] as $key => $value) {
+                //echo $key . '<br>' . $value;
+                if ($value == 1) {
+                    $arrayForEmp[$key]['employee_id'] = $key;
+                    $arrayForEmp[$key]['house_build_recovery'] = 0;
+                    $arrayForEmp[$key]['house_repair_recovery'] = 0;
+                    $arrayForEmp[$key]['car_loan'] = 0;
+                    $arrayForEmp[$key]['computer_loan'] = 0;
+                    $arrayForEmp[$key]['extra_loan'] = 0;
+                    $arrayForEmp[$key]['gpf_loan'] = 0;
+                    $arrayForEmp[$key]['motorcycle_loan'] = 0;
+                    $emp_loans[] = $this->EmployeeLoan->find('all', array(
+                        'fields' => array('EmployeeLoan.id', 'EmployeeLoan.employee_id', 'EmployeeLoan.loan_amount', 'EmployeeLoan.current_due', 'EmployeeLoan.interest_amount', 'EmployeeLoan.installment_amount'),
+                        'conditions' => array('EmployeeLoan.employee_id' => $key)));
+                    $emp_info[] = $this->Employee->find('all', array('conditions' => array('Employee.id' => $key)));
+                    $checkEmpOnSalarySheet[] = $this->EmployeeSalarySheet->find('all', array(
+                        'fields' => array('EmployeeSalarySheet.id'),
+                        'conditions' => array('EmployeeSalarySheet.employee_id' => $key, 'EmployeeSalarySheet.fiscal_year_id' => $emp_data['salarysheets']['fiscal_year_id'], 'EmployeeSalarySheet.month_id' => $emp_data['salarysheets']['month_id'])));
+                }
+                //
+            }
+            //$this->SaleTarget->create();
+            // $data_array = array();
+            // pr($emp_info); die();
+            foreach ($emp_info as $key => $val) {
+                //pr($val[0]);die();
+                //$this->loan_recovery($emp_data['salarysheets']['fiscal_year_id'], $emp_data['salarysheets']['month_id'], 4, $val[0]['Employee']['id']);
+                //die();
+
+                $empAllowace = $val[0]['EmployeeAllowance'];
+                $empRecovery = $val[0]['EmployeeRecovery'];
+                $countEmployeeLoan = count($val[0]['EmployeeLoan']);
+                //pr($val[0]);die();
+                /* GpfSubscription start */
+                $this->loadModel('GpfSubscription');
+
+                $gpfSubscription = $this->GpfSubscription->find('all', array('conditions' => array('GpfSubscription.employee_id' => $val[0]['Employee']['id']),
+                    //'fields' => 'Post.name',
+                    'order' => 'GpfSubscription.id DESC',
+                    'limit' => 1,
+                    'recursive' => 0));
+                // pr($gpfSubscription);die();
+                $gpf['GpfSubscription']['employee_id'] = $val[0]['EmployeeRecovery']['employee_id'];
+                $gpf['GpfSubscription']['fiscal_year_id'] = $emp_data['salarysheets']['fiscal_year_id'];
+                $gpf['GpfSubscription']['month_id'] = $emp_data['salarysheets']['month_id'];
+                $gpf['GpfSubscription']['created_at'] = $this->current_datetime();
+                if ($val[0]['EmployeeRecovery']['gpf_recovery'] == 1) {
+                    $gpf['GpfSubscription']['subscription_recovery'] = $val[0]['EmployeeRecovery']['gpf'];
+                    $gpf['GpfSubscription']['total_subscription_balance'] = $gpfSubscription[0]['GpfSubscription']['total_subscription_balance'] + $val[0]['EmployeeRecovery']['gpf'];
+                    $gpf['GpfSubscription']['sub_status'] = 1;
+                    $gpf_array[] = $gpf;
+                    $this->GpfSubscription->saveAll($gpf_array);
+                    $gpf_array = [];
+                } else {
+                    $gpf['GpfSubscription']['total_subscription_balance'] = $gpfSubscription[0]['GpfSubscription']['total_subscription_balance'];
+                }
+                // die();
+                /* GpfSubscription end */
+                if ($countEmployeeLoan > 0):
+                    $j = 0;
+                    foreach ($val[0]['EmployeeLoan'] as $loanKey => $loanval) {
+                        $loanRecoverydata['LoanRecovery']['month_id'] = $emp_data['salarysheets']['month_id'];
+                        $loanRecoverydata['LoanRecovery']['fiscal_year_id'] = $emp_data['salarysheets']['fiscal_year_id'];
+                        $loanRecoverydata['LoanRecovery']['loan_id'] = $loanval['loan_id'];
+                        $loanRecoverydata['LoanRecovery']['employee_id'] = $loanval['employee_id'];
+                        //pr($loanval); die();
+                        if ($loanval['current_due'] != 0) {
+                            if ($loanval['current_due'] >= $loanval['installment_amount']) {
+                                $current_due = $loanval['current_due'] - $loanval['installment_amount'];
+                                // echo $current_due;die();
+                                $this->EmployeeLoan->updateAll(
+                                        array('EmployeeLoan.current_due' => $current_due), array('EmployeeLoan.id ' => $loanval['id'])
+                                );
+                                $loanRecoverydata['LoanRecovery']['recovery_loan_amount'] = $loanval['installment_amount'];
+                                $loanRecoverydata['LoanRecovery']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                $loanRecoverydata[] = $loanRecoverydata;
+                                $this->LoanRecovery->saveAll($loanRecoverydata);
+                            } else {
+                                if ($loanval['interest_amount'] == 0) {
+                                    $loanval['interest_amount_due'] = $this->interest_calculation($loanval);
+                                }
+                                $temp = $loanval['interest_amount_due'] + $loanval['current_due'];
+                                $interst_amount = $temp - $loanval['installment_amount'];
+                                $current_due = 0;
+                                $this->EmployeeLoan->updateAll(
+                                        array('EmployeeLoan.current_due' => $current_due, 'EmployeeLoan.interest_amount_due' => $interst_amount), array('EmployeeLoan.id ' => $loanval['id'])
+                                );
+                                $loanRecoverydata['LoanRecovery']['recovery_loan_amount'] = $loanval['installment_amount'];
+                                $loanRecoverydata['LoanRecovery']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                $loanRecoverydata[] = $loanRecoverydata;
+                                $this->LoanRecovery->saveAll($loanRecoverydata);
+
+                                //pr($loanval);die();
+                                //$this->salary_sheet($loanval['loan_id'], $loanval['installment_amount'], $val, $emp_data);
+                            }
+                        } else {
+
+                            /* current due, interest ammount, total pay calculation  start */
+                            if ($loanval['interest_amount'] == 0) {
+                                $loanval['interest_amount_due'] = $this->interest_calculation($loanval);
+                                //$loanval['interest_amount_due'] = $this->interest_calculation($loanval);
+                                $gpf['GpfSubscription']['loan_interest_amount'] = $this->interest_calculation($loanval);
+                                $gpf['GpfSubscription']['sub_status'] = 4;
+                                $gpf['GpfSubscription']['subscription_recovery'] = 0;
+                                $gpf['GpfSubscription']['loan_recovery'] = 0;
+                                $gpf['GpfSubscription']['loan_interest_recovery'] = 0;
+                                $gpf_array[] = $gpf;
+                                $this->GpfSubscription->saveAll($gpf_array);
+                                $gpf_array = [];
+                            }
+
+                            // pr($loanval);die();
+                            if ($loanval['interest_amount_due'] != 0) {
+                                if ($loanval['interest_amount_due'] >= $loanval['installment_amount']) {
+                                    $interest_amount_due = $loanval['interest_amount_due'] - $loanval['installment_amount'];
+                                    $this->EmployeeLoan->updateAll(
+                                            array('EmployeeLoan.interest_amount_due' => $interest_amount_due), array('EmployeeLoan.id ' => $loanval['id'])
+                                    );
+                                    $loanRecoverydata['LoanRecovery']['recovery_loan_amount'] = $loanval['installment_amount'];
+                                    $loanRecoverydata['LoanRecovery']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                    $loanRecoverydata[] = $loanRecoverydata;
+                                    $this->LoanRecovery->saveAll($loanRecoverydata);
+                                    //$this->salary_sheet($loanval['loan_id'], $loanval['installment_amount'], $val, $emp_data);
+                                } else {
+                                    $interest_amount_due = 0;
+                                    //$this->salary_sheet($loanval['loan_id'], $loanval['interest_amount'], $val, $emp_data);
+                                    $this->EmployeeLoan->updateAll(
+                                            array('EmployeeLoan.interest_amount_due' => $interest_amount_due), array('EmployeeLoan.id ' => $loanval['id'])
+                                    );
+                                    $loanRecoverydata['LoanRecovery']['recovery_loan_amount'] = $loanval['interest_amount_due'];
+                                    $loanRecoverydata['LoanRecovery']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                    $loanRecoverydata[] = $loanRecoverydata;
+                                    $this->LoanRecovery->saveAll($loanRecoverydata);
+                                }
+                            }
+                            /* current due interest ammount total pay calculation end */
+                        }
+                        if ($loanval['loan_type_id'] == 8):
+                            if ($loanval['current_due'] != 0) {
+                                if ($loanval['current_due'] >= $loanval['installment_amount']) {
+                                    $gpf['GpfSubscription']['subscription_recovery'] = 0;
+                                    $gpf['GpfSubscription']['total_subscription_balance'] = $gpf['GpfSubscription']['total_subscription_balance'] + $loanval['installment_amount'];
+                                    $gpf['GpfSubscription']['loan_recovery'] = $loanval['installment_amount'];
+                                    $gpf['GpfSubscription']['loan_interest_recovery'] = 0;
+                                    $gpf['GpfSubscription']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                    $gpf['GpfSubscription']['loan_interest_amount'] = 0;
+                                    $gpf['GpfSubscription']['sub_status'] = 2;
+                                    $gpfdata[] = $gpf;
+                                    $this->GpfSubscription->saveAll($gpfdata);
+                                    $gpfdata = [];
+                                } else {
+                                    $gpf['GpfSubscription']['subscription_recovery'] = 0;
+                                    $gpf['GpfSubscription']['loan_recovery'] = $loanval['current_due'];
+                                    $loan_interest_recovery = $loanval['installment_amount'] - $loanval['current_due'];
+                                    $gpf['GpfSubscription']['total_subscription_balance'] = $gpf['GpfSubscription']['total_subscription_balance'] + $loanval['current_due']+$loan_interest_recovery;
+                                    $gpf['GpfSubscription']['loan_interest_recovery'] = $loan_interest_recovery;
+                                    $gpf['GpfSubscription']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                    $gpf['GpfSubscription']['loan_interest_amount'] = 0;
+                                    $gpf['GpfSubscription']['sub_status'] = 2;
+                                    $gpfdata[] = $gpf;
+                                    $this->GpfSubscription->saveAll($gpfdata);
+                                    $gpfdata = [];
+                                }
+                            } else {
+                                if ($loanval['interest_amount_due'] != 0) {
+                                    if ($loanval['interest_amount_due'] >= $loanval['installment_amount']) {
+                                        $gpf['GpfSubscription']['subscription_recovery'] = 0;
+                                        $gpf['GpfSubscription']['total_subscription_balance'] = $gpf['GpfSubscription']['total_subscription_balance'] + $loanval['installment_amount'];
+                                        $gpf['GpfSubscription']['loan_interest_recovery'] = $loanval['installment_amount'];
+                                        $gpf['GpfSubscription']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                        $gpf['GpfSubscription']['loan_interest_amount'] = 0;
+                                        $gpf['GpfSubscription']['sub_status'] = 3;
+                                        $gpfdata[] = $gpf;
+                                        $this->GpfSubscription->saveAll($gpfdata);
+                                        $gpfdata = [];
+                                    } else {
+                                        $interest_amount_due = 0;
+                                        $gpf['GpfSubscription']['subscription_recovery'] = 0;
+                                        $gpf['GpfSubscription']['total_subscription_balance'] = $gpf['GpfSubscription']['total_subscription_balance'] + $loanval['interest_amount_due'];
+                                        $gpf['GpfSubscription']['loan_interest_recovery'] = $loanval['interest_amount_due'];
+                                        $gpf['GpfSubscription']['employee_loan_id'] = $emp_loans[$key][$j]['EmployeeLoan']['id'];
+                                        $gpf['GpfSubscription']['loan_interest_amount'] = 0;
+                                        $gpf['GpfSubscription']['sub_status'] = 3;
+                                        $gpfdata[] = $gpf;
+                                        $this->GpfSubscription->saveAll($gpfdata);
+                                        $gpfdata = [];
+                                    }
+                                }
+                            }
+                        endif;
+                        $j++;
+                    }
+                endif;
+                // die();
+                // $totalAllowance = $val[0]['Scale']['grade_basic'] + $empAllowace['da'] + $empAllowace['pp'] + $empAllowace['medical'] + $empAllowace['convence'] + $empAllowace['tiffin'] + $empAllowace['wash'] + $empAllowace['mobile'] + $empAllowace['charges'] + $empAllowace['others'] + $empAllowace['house_rent'] + $empAllowace['education'];
+                //  $totalRecovery = $empRecovery['gpf'] + $empRecovery['gpf_recovery'] + $empRecovery['fixed_house_rent'] + $empRecovery['water_supply'] + $empRecovery['bf'] + $empRecovery['gi'] + $empRecovery['gi_recovery'] + $empRecovery['tin_shed'] + 0;
+                // $netPay = $totalAllowance - $totalRecovery;
+            }
+            $loanRecoveries = $this->LoanRecovery->find('all', array(
+                'conditions' => array('LoanRecovery.fiscal_year_id' => $emp_data['salarysheets']['fiscal_year_id'], 'LoanRecovery.month_id' => $emp_data['salarysheets']['month_id'])));
+            $i = 0;
+            //pr($loanRecoveries);                            
+            foreach ($loanRecoveries as $lrkey => $lrValue) {
+                //pr($lrValue);die();
+                $emplyoee_id_collect[] = $lrValue['EmployeeLoan']['employee_id'];
+                $storeData[$i]['employee_id'] = $lrValue['EmployeeLoan']['employee_id'];
+                $storeData[$i]['house_build_recovery'] = ($lrValue['Loan']['id'] == 4) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['house_repair_recovery'] = ($lrValue['Loan']['id'] == 7) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['car_loan'] = ($lrValue['Loan']['id'] == 9) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['computer_loan'] = ($lrValue['Loan']['id'] == 5) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['extra_loan'] = ($lrValue['Loan']['id'] == 10) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['gpf_loan'] = ($lrValue['Loan']['id'] == 6) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $storeData[$i]['motorcycle_loan'] = ($lrValue['Loan']['id'] == 8) ? $lrValue['LoanRecovery']['recovery_loan_amount'] : 0;
+                $i++;
+            }
+            // pr($storeData);die();
+            if (!empty($storeData[0])):
+                $final_array = array($storeData[0]);
+                for ($i = 1; $i < sizeof($storeData); $i++) {
+                    $k = -1;
+                    foreach ($final_array as $key => $valf) {
+                        if ($storeData[$i]['employee_id'] == $valf['employee_id']) {
+                            $k = $key;
+                            break;
+                        }
+                    }
+
+                    if ($k == -1) {
+                        array_push($final_array, $storeData[$i]);
+                    } else {
+                        $final_array[$k]['house_build_recovery'] += $storeData[$i]['house_build_recovery'];
+                        $final_array[$k]['house_repair_recovery'] += $storeData[$i]['house_repair_recovery'];
+                        $final_array[$k]['car_loan'] += $storeData[$i]['car_loan'];
+                        $final_array[$k]['computer_loan'] += $storeData[$i]['computer_loan'];
+                        $final_array[$k]['extra_loan'] += $storeData[$i]['extra_loan'];
+                        $final_array[$k]['gpf_loan'] += $storeData[$i]['gpf_loan'];
+                        $final_array[$k]['motorcycle_loan'] += $storeData[$i]['motorcycle_loan'];
+                    }
+                }
+
+                //pr($final_array);die();
+                foreach ($final_array as $va) {
+                    $last_final_array[$va['employee_id']]['employee_id'] = $va['employee_id'];
+                    $last_final_array[$va['employee_id']]['house_build_recovery'] = $va['house_build_recovery'];
+                    $last_final_array[$va['employee_id']]['house_repair_recovery'] = $va['house_repair_recovery'];
+                    $last_final_array[$va['employee_id']]['car_loan'] = $va['car_loan'];
+                    $last_final_array[$va['employee_id']]['computer_loan'] = $va['computer_loan'];
+                    $last_final_array[$va['employee_id']]['extra_loan'] = $va['extra_loan'];
+                    $last_final_array[$va['employee_id']]['gpf_loan'] = $va['gpf_loan'];
+                    $last_final_array[$va['employee_id']]['motorcycle_loan'] = $va['motorcycle_loan'];
+                }
+
+                foreach ($last_final_array as $last_key => $last_value) {
+                    //pr($last_value);
+                    $arrayForEmp[$last_key]['employee_id'] = $last_value['employee_id'];
+                    $arrayForEmp[$last_key]['house_build_recovery'] = $last_value['house_build_recovery'];
+                    $arrayForEmp[$last_key]['house_repair_recovery'] = $last_value['house_repair_recovery'];
+                    $arrayForEmp[$last_key]['car_loan'] = $last_value['car_loan'];
+                    $arrayForEmp[$last_key]['computer_loan'] = $last_value['computer_loan'];
+                    $arrayForEmp[$last_key]['extra_loan'] = $last_value['extra_loan'];
+                    $arrayForEmp[$last_key]['gpf_loan'] = $last_value['gpf_loan'];
+                    $arrayForEmp[$last_key]['motorcycle_loan'] = $last_value['motorcycle_loan'];
+                }
+
+                //  pr($arrayForEmp);
+                $m = 0;
+                foreach ($arrayForEmp as $emvalue) {
+                    $finshArray[$m]['employee_id'] = $emvalue['employee_id'];
+                    $finshArray[$m]['house_build_recovery'] = $emvalue['house_build_recovery'];
+                    $finshArray[$m]['house_repair_recovery'] = $emvalue['house_repair_recovery'];
+                    $finshArray[$m]['car_loan'] = $emvalue['car_loan'];
+                    $finshArray[$m]['computer_loan'] = $emvalue['computer_loan'];
+                    $finshArray[$m]['extra_loan'] = $emvalue['extra_loan'];
+                    $finshArray[$m]['gpf_loan'] = $emvalue['gpf_loan'];
+                    $finshArray[$m]['motorcycle_loan'] = $emvalue['motorcycle_loan'];
+                    $m++;
+                }
+                // echo 'jjjjjjjjjjjjjj'; pr($finshArray);die();
+                //Marge two arrays
+                $marge_array = array_merge($last_final_array, $arrayForEmp);
+
+//Now call array_sync
+                $latest_array = $this->array_sync($marge_array);
+            endif;

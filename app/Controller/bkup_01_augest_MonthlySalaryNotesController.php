@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
-class MonthlySalaryNotesController extends AppController {
+class bkup_01_augest_MonthlySalaryNotesController extends AppController {
 
 /**
  * Components

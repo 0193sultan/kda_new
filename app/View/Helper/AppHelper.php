@@ -103,7 +103,7 @@ class AppHelper extends Helper {
                 'Employee.id' => $employee_id),
                 )
         );
-                  //  pr($a);
+        //  pr($a);
         if (!empty($a)) {
             $b = $scale->find('all', array(
                 'fields' => array('Scale.grade_basic'),
@@ -111,7 +111,7 @@ class AppHelper extends Helper {
                     'Scale.employee_grade_id' => $a[0]['EmployeeGrade']['id']),
                     )
             );
-          //  pr($b);
+            //  pr($b);
             $basic_start = $b[0]['Scale']['grade_basic'];
             $last_key = count($b) - 1;
             $basic_end = $b[$last_key]['Scale']['grade_basic'];
@@ -133,12 +133,57 @@ class AppHelper extends Helper {
                 'Employee.id' => $employee_id),
                 )
         );
-       /* if(){
+        /* if(){
           return $arrange_data;
-        }else{
-           return '';
-        }*/
-     return $a[0]['Employee']['employeeID'];
+          }else{
+          return '';
+          } */
+        return $a[0]['Employee']['employeeID'];
     }
 
+    public function fiscal_year($fiscal_year = null) {
+        App::import("Model", "FiscalYear");
+        $fiscal = new FiscalYear();
+
+        $a = $fiscal->find('all', array(
+            'conditions' => array(
+                'FiscalYear.id' => $fiscal_year),
+                )
+        );
+        return $a[0]['FiscalYear']['name'];
+    }
+
+    public function get_month($month = null) {
+        App::import("Model", "Month");
+        $mon = new Month();
+
+        $a = $mon->find('all', array(
+            'conditions' => array(
+                'Month.id' => $month),
+                )
+        );
+        return $a[0]['Month']['name'];
+    }
+    public function get_loan_name($loan_id = null) {
+        App::import("Model", "Loan");
+        $mon = new Loan();
+
+        $a = $mon->find('all', array(
+            'conditions' => array(
+                'Loan.id' => $loan_id),
+                )
+        );
+        return $a[0]['Loan']['name'];
+    }
+        public function get_bank_name($bank_id = null) {
+        App::import("Model", "BankInfo");
+        $mon = new BankInfo();
+
+        $a = $mon->find('all', array(
+            'conditions' => array(
+                'BankInfo.id' => $bank_id),
+                )
+        );
+        return $a[0]['BankInfo']['name'];
+    }
 }

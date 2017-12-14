@@ -23,11 +23,11 @@
                 ));
                 ?>
 
-                <table id="EmployeeLoans" class="table table-bordered table-striped" style="width: 50%;" align="center">
+                <table id="EmployeeLoans" class="table table-bordered table-striped" style="width: 60%;" align="center">
 
                     <tr>
                         <td><span style="font-weight: 700;">Department : </span></td>
-                        <td> 
+                        <td>
                             <select style="width: 110px;" name="department_id" required>
                                 <option value="0">All</option>
                                 <?php
@@ -107,9 +107,9 @@
                             <td class="text-center"><?php echo h($employeeLoan['EmployeeLoan']['loan_approved_date']); ?></td>
                             <td class="text-center">
                                 <?php
-                                if ($employeeLoan['EmployeeLoan']['status'] == 0) {
+                                if ($employeeLoan['EmployeeLoan']['status'] == 1) {
                                     echo "Active";
-                                } else if ($employeeLoan['EmployeeLoan']['status'] == 1) {
+                                } else if ($employeeLoan['EmployeeLoan']['status'] == 0) {
                                     echo "Inactive";
                                 }
                                 ?>

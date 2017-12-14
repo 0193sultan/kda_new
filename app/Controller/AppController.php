@@ -72,10 +72,11 @@ class AppController extends Controller {
                     'allGroups' => array('title' => 'User Groups', 'controller' => 'WarterSupplySettings', 'action' => 'index'),
                     'permissions' => array('title' => 'Group Permissions', 'controller' => 'WarterSupplySettings', 'action' => 'index'),
                 )),
-            'BankInfos' => array('title' => 'Bank Infos', 'controller' => 'BankInfos', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'BankInfos' => array('title' => 'Bank', 'controller' => 'BankInfos', 'action' => 'admin_index', 'icon' => '<i class="fa fa-university"></i>', 'scroll' => '0',
                 'child' => array(
-                    'BankInfos' => array('title' => 'BankInfo List', 'controller' => 'BankInfos', 'action' => 'admin_index'),
-                    'BankInfos/add' => array('title' => 'BankInfo Add', 'controller' => 'BankInfos', 'action' => 'admin_add')
+                    'BankInfos' => array('title' => 'Bank List', 'controller' => 'BankInfos', 'action' => 'admin_index'),
+                    'BankAccounts' => array('title' => 'Bank Accounts', 'controller' => 'BankAccounts', 'action' => 'admin_index'),
+                    'Branches' => array('title' => 'Branches', 'controller' => 'Branches', 'action' => 'admin_index'),
                 )),
             /* 'Banks' => array('title' => 'Banks', 'controller' => 'Banks', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
               'child' => array(
@@ -87,7 +88,7 @@ class AppController extends Controller {
               'Basics' => array('title' => 'Basics List', 'controller' => 'Basics', 'action' => 'admin_index'),
               'Basics/add' => array('title' => 'Basics Add', 'controller' => 'Basics', 'action' => 'admin_add')
               )), */
-            'Departments' => array('title' => 'Departments', 'controller' => 'Departments', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'Departments' => array('title' => 'Departments', 'controller' => 'Departments', 'action' => 'admin_index', 'icon' => '<i class="fa fa-building-o"></i>', 'scroll' => '0',
                 'child' => array(
                     'Departments' => array('title' => 'Departments List', 'controller' => 'Departments', 'action' => 'admin_index'),
                     'Departments/add' => array('title' => 'Departments Add', 'controller' => 'Departments', 'action' => 'admin_add')
@@ -97,7 +98,7 @@ class AppController extends Controller {
                     'Designations' => array('title' => 'Designations List', 'controller' => 'Designations', 'action' => 'admin_index'),
                     'Designations/add' => array('title' => 'Designations Add', 'controller' => 'Designations', 'action' => 'admin_add')
                 )),
-            'EduStatuses' => array('title' => 'Edu Statuses', 'controller' => 'EduStatuses', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'EduStatuses' => array('title' => 'Edu Statuses', 'controller' => 'EduStatuses', 'action' => 'admin_index', 'icon' => '<i class="fa fa-graduation-cap"></i>', 'scroll' => '0',
                 'child' => array(
                     'EduStatuses' => array('title' => 'Edu. Statuses List', 'controller' => 'EduStatuses', 'action' => 'admin_index'),
                     'EduStatuses/add' => array('title' => 'Designations Add', 'controller' => 'EduStatuses', 'action' => 'admin_add')
@@ -114,7 +115,7 @@ class AppController extends Controller {
                     'EmployeeHouseRentSettings' => array('title' => 'House Rent List', 'controller' => 'EmployeeHouseRentSettings', 'action' => 'admin_index'),
                     'EmployeeHouseRentSettings/add' => array('title' => 'House Rent Add', 'controller' => 'EmployeeHouseRentSettings', 'action' => 'admin_add')
                 )),
-            'Employees' => array('title' => 'Employees', 'controller' => 'Employees', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'Employees' => array('title' => 'Employees', 'controller' => 'Employees', 'action' => 'admin_index', 'icon' => '<i class="fa fa-users"></i>', 'scroll' => '0',
                 'child' => array(
                     'Employees' => array('title' => 'Employees List', 'controller' => 'Employees', 'action' => 'admin_index'),
                     'Employees/add' => array('title' => 'Employees Add', 'controller' => 'Employees', 'action' => 'admin_add')
@@ -122,39 +123,43 @@ class AppController extends Controller {
             'EmployeeLoans' => array('title' => 'Employee Loans', 'controller' => 'EmployeeLoans', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
                     'EmployeeLoans' => array('title' => 'Employee Loans List', 'controller' => 'EmployeeLoans', 'action' => 'admin_index'),
-                    'EmployeeLoans/add' => array('title' => 'Employee Loans Add', 'controller' => 'EmployeeLoans', 'action' => 'admin_add')
+                    'EmployeeLoans/add' => array('title' => 'Employee Loans Add', 'controller' => 'EmployeeLoans', 'action' => 'admin_add'),
+                    'loanAdjustments' => array('title' => 'loan Adjustments', 'controller' => 'loanAdjustments', 'action' => 'admin_index'),
+                    'loanAdjustments/add' => array('title' => 'loan Adjustments Add', 'controller' => 'loanAdjustments', 'action' => 'admin_add'),
+                    'GpfLoanTransfers' => array('title' => 'Gpf Loan Transfers', 'controller' => 'GpfLoanTransfers', 'action' => 'admin_index'),
                 )),
             'Loans Recovery Register' => array('title' => 'Recovery Register', 'controller' => 'LoanRecoveries', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
                     'LoanRecoveries' => array('title' => 'Loans Recovery List', 'controller' => 'LoanRecoveries', 'action' => 'admin_index'),
                     'OtherRegisters' => array('title' => 'Other Registers', 'controller' => 'OtherRegisters', 'action' => 'admin_index'),
                 )),
-            'EmployeeSalarySheets' => array('title' => 'Employee Salary', 'controller' => 'EmployeeSalarySheets', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'EmployeeSalarySheets' => array('title' => 'Employee Salary', 'controller' => 'EmployeeSalarySheets', 'action' => 'admin_index', 'icon' => '<i class="fa fa-credit-card"></i>', 'scroll' => '0',
                 'child' => array(
+                    'SalarySheets' => array('title' => 'Generate Salary', 'controller' => 'SalarySheets', 'action' => 'admin_index'),
+                    'DueSalarySheets/add' => array('title' => 'Generate Due Salary', 'controller' => 'DueSalarySheets', 'action' => 'admin_add'),
                     'EmployeeSalarySheets' => array('title' => 'Employee Salary Sheets', 'controller' => 'EmployeeSalarySheets', 'action' => 'admin_index'),
                     'MonthlySalaryNotes' => array('title' => 'Monthly Salary Notes', 'controller' => 'MonthlySalaryNotes', 'action' => 'admin_index'),
                     'MonthlySalaryNotes/add' => array('title' => 'Monthly Salary Notes Add', 'controller' => 'MonthlySalaryNotes', 'action' => 'admin_add'),
                     //'MonthlySalaryNotes/print_view' => array('title' => 'Monthly Notes View', 'controller' => 'MonthlySalaryNotes', 'action' => 'admin_print_view'),
                     'SalaryCertificates' => array('title' => 'Salary Certificates', 'controller' => 'SalaryCertificates', 'action' => 'admin_index'),
-                    'SallarySummarySheets' => array('title' => 'Sallary Summary Sheets', 'controller' => 'SallarySummarySheets', 'action' => 'admin_index')
+                    'SallarySummarySheets' => array('title' => 'Sallary Summary Sheet', 'controller' => 'SallarySummarySheets', 'action' => 'admin_index'),
+                    'EmployeeBonuses' => array('title' => 'Generate Bonus', 'controller' => 'EmployeeBonuses', 'action' => 'admin_index'),
+                    'EmployeeBonuses/show_bonus' => array('title' => 'Bonus Sheet Print', 'controller' => 'EmployeeBonuses', 'action' => 'admin_show_bonus'),
+                    'IndividualSallarySummarySheets' => array('title' => 'Individual Sallary Sum.', 'controller' => 'IndividualSallarySummarySheets', 'action' => 'admin_index'),
+                    'YearCloseGpsSubscriptions' => array('title' => 'Year Close for Gps.', 'controller' => 'YearCloseGpsSubscriptions', 'action' => 'admin_index')
                 )
             ),
-            'SalarySheets' => array('title' => 'Salary Sheets', 'controller' => 'Employees', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
-                'child' => array(
-                    'SalarySheets' => array('title' => 'Salary Sheets', 'controller' => 'Employees', 'action' => 'admin_index'),
-                    'SalarySheets/add' => array('title' => 'Salary Sheets Add', 'controller' => 'Employees', 'action' => 'admin_add')
-                )),
             'EmployeeTypes' => array('title' => 'Employee Types', 'controller' => 'EmployeeTypes', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
                     'EmployeeTypes' => array('title' => 'Employee Types List', 'controller' => 'EmployeeTypes', 'action' => 'admin_index'),
                     'EmployeeTypes/add' => array('title' => 'Employee Types Add', 'controller' => 'EmployeeTypes', 'action' => 'admin_add')
                 )),
-            'FiscalYears' => array('title' => 'FiscalYears', 'controller' => 'FiscalYears', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'FiscalYears' => array('title' => 'FiscalYears', 'controller' => 'FiscalYears', 'action' => 'admin_index', 'icon' => '<i class="fa fa-calendar"></i>', 'scroll' => '0',
                 'child' => array(
                     'FiscalYears' => array('title' => 'Fiscal Years List', 'controller' => 'FiscalYears', 'action' => 'admin_index'),
                     'FiscalYears/add' => array('title' => 'Fiscal Years Add', 'controller' => 'FiscalYears', 'action' => 'admin_add')
                 )),
-            'FiscalYearSettings' => array('title' => 'Fiscal Year Settings', 'controller' => 'FiscalYearSettings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'FiscalYearSettings' => array('title' => 'Fiscal Year Settings', 'controller' => 'FiscalYearSettings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-calendar-o"></i>', 'scroll' => '0',
                 'child' => array(
                     'FiscalYearSettings' => array('title' => 'Fiscal Year List', 'controller' => 'FiscalYearSettings', 'action' => 'admin_index'),
                     'FiscalYearSettings/add' => array('title' => 'Fiscal Year Add', 'controller' => 'FiscalYearSettings', 'action' => 'admin_add')
@@ -164,15 +169,15 @@ class AppController extends Controller {
                     'JobStatuses' => array('title' => 'Job Statuses List', 'controller' => 'JobStatuses', 'action' => 'admin_index'),
                     'JobStatuses/add' => array('title' => 'Job Statuses Add', 'controller' => 'JobStatuses', 'action' => 'admin_add')
                 )),
-            'LivingStatuses' => array('title' => 'LivingStatuses', 'controller' => 'LivingStatuses', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'LivingStatuses' => array('title' => 'Living Statuses', 'controller' => 'LivingStatuses', 'action' => 'admin_index', 'icon' => '<i class="fa fa-home" aria-hidden="true"></i>', 'scroll' => '0',
                 'child' => array(
                     'LivingStatuses' => array('title' => 'Living Statuses List', 'controller' => 'LivingStatuses', 'action' => 'admin_index'),
                     'LivingStatuses/add' => array('title' => 'Living Statuses Add', 'controller' => 'LivingStatuses', 'action' => 'admin_add')
                 )),
-            'LoanRecoveries' => array('title' => 'Loan Recoveries', 'controller' => 'LoanRecoveries', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
-                'child' => array(
-                    'LoanRecoveries' => array('title' => 'Loan Recoveries List', 'controller' => 'LoanRecoveries', 'action' => 'admin_index')
-                )),
+            /* 'LoanRecoveries' => array('title' => 'Loan Recoveries', 'controller' => 'LoanRecoveries', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+              'child' => array(
+              'LoanRecoveries' => array('title' => 'Loan Recoveries List', 'controller' => 'LoanRecoveries', 'action' => 'admin_index')
+              )), */
             'Loans' => array('title' => 'Loans', 'controller' => 'Loans', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
                     'Loans' => array('title' => 'Loans List', 'controller' => 'Loans', 'action' => 'admin_index'),
@@ -188,15 +193,11 @@ class AppController extends Controller {
                     'MaritalStatuses' => array('title' => 'Marital Statuses List', 'controller' => 'MaritalStatuses', 'action' => 'admin_index'),
                     'MaritalStatuses/add' => array('title' => 'Marital Statuses Add', 'controller' => 'MaritalStatuses', 'action' => 'admin_add')
                 )),
-            'MonthlyAttendanceEntries' => array('title' => 'Monthly Attendance Entries', 'controller' => 'MonthlyAttendanceEntries', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'MonthlyAttendanceEntries' => array('title' => 'Monthly Entries', 'controller' => 'MonthlyAttendanceEntries', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
                     'MonthlyAttendanceEntries' => array('title' => 'Monthly Attendance  List', 'controller' => 'MonthlyAttendanceEntries', 'action' => 'admin_index'),
-                    'MonthlyAttendanceEntries/add' => array('title' => 'Monthly Attendance  Add', 'controller' => 'MonthlyAttendanceEntries', 'action' => 'admin_add')
-                )),
-            'NewBasics' => array('title' => 'New Basics', 'controller' => 'NewBasics', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
-                'child' => array(
-                    'NewBasics' => array('title' => 'New Basics List', 'controller' => 'NewBasics', 'action' => 'admin_index'),
-                    'NewBasics/add' => array('title' => 'New Basics Add', 'controller' => 'NewBasics', 'action' => 'admin_add')
+                    'MonthlyAttendanceEntries/add' => array('title' => 'Monthly Attendance  Add', 'controller' => 'MonthlyAttendanceEntries', 'action' => 'admin_add'),
+                    'MonthlyOthersEnties/add' => array('title' => 'Monthly Others Enties Add', 'controller' => 'MonthlyOthersEnties', 'action' => 'admin_add'),
                 )),
             'Quotas' => array('title' => 'Quotas', 'controller' => 'Quotas', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
@@ -208,20 +209,52 @@ class AppController extends Controller {
                     'Religions' => array('title' => 'Religions List', 'controller' => 'Religions', 'action' => 'admin_index'),
                     'Religions/add' => array('title' => 'Religions Add', 'controller' => 'Religions', 'action' => 'admin_add')
                 )),
-            'SalarySheets' => array('title' => 'Salary Sheets', 'controller' => 'SalarySheets', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
-                'child' => array(
-                    'SalarySheets' => array('title' => 'Salary Sheets List', 'controller' => 'SalarySheets', 'action' => 'admin_index'),
-                    'SalarySheets/add' => array('title' => 'Salary Sheets Add', 'controller' => 'SalarySheets', 'action' => 'admin_add')
-                )),
             /* 'Scales' => array('title' => 'Scales', 'controller' => 'Scales', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
               'child' => array(
               'Scales' => array('title' => 'Scales List', 'controller' => 'Scales', 'action' => 'admin_index'),
               'Scales/add' => array('title' => 'Scales Add', 'controller' => 'Scales', 'action' => 'admin_add')
               )), */
-            'Sexes' => array('title' => 'Sexes', 'controller' => 'Sexes', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'Sexes' => array('title' => 'Gender List', 'controller' => 'Sexes', 'action' => 'admin_index', 'icon' => '<i class="fa fa-male"></i>', 'scroll' => '0',
                 'child' => array(
-                    'Sexes' => array('title' => 'Sexes List', 'controller' => 'Sexes', 'action' => 'admin_index'),
-                    'Sexes/add' => array('title' => 'Sexes Add', 'controller' => 'Sexes', 'action' => 'admin_add')
+                    'Sexes' => array('title' => 'Gender List', 'controller' => 'Sexes', 'action' => 'admin_index'),
+                    'Sexes/add' => array('title' => 'Gender Add', 'controller' => 'Sexes', 'action' => 'admin_add')
+                )),
+            'ContructorNames' => array('title' => 'Contructor Management', 'controller' => 'ContructorNames', 'action' => 'admin_index', 'icon' => '<i class="fa fa-male"></i>', 'scroll' => '0',
+                'child' => array(
+                    'ContructorProjectNames' => array('title' => 'Project Names', 'controller' => 'ContructorProjectNames', 'action' => 'admin_index'),
+                    'ContructorNames' => array('title' => 'Contructor Profile', 'controller' => 'ContructorNames', 'action' => 'admin_index'),
+                    'WorkOrders' => array('title' => 'Work Orders', 'controller' => 'WorkOrders', 'action' => 'admin_index'),
+                    'ContructorAdvancePayments' => array('title' => 'Advance Payments', 'controller' => 'ContructorAdvancePayments', 'action' => 'admin_index'),
+                    'ContructorBillPayments' => array('title' => 'Bill Payments', 'controller' => 'ContructorBillPayments', 'action' => 'admin_index'),
+                    'SecurityDepositeReturns' => array('title' => 'Security Deposite Returns', 'controller' => 'SecurityDepositeReturns', 'action' => 'admin_index'),
+                    'ContructorLedgers' => array('title' => 'Contructor Ledgers', 'controller' => 'ContructorLedgers', 'action' => 'admin_index'),
+                    'ContructorCertificates' => array('title' => 'Contructor Certificates', 'controller' => 'ContructorCertificates', 'action' => 'admin_index'),
+                )),
+            'AccHeadTypes' => array('title' => 'Accounting', 'controller' => 'AccHeadTypes', 'action' => 'admin_index', 'icon' => '<i class="fa fa-money" aria-hidden="true"></i>', 'scroll' => '0',
+                'child' => array(
+                    'AccHeadTypes' => array('title' => 'Accounting Head Types', 'controller' => 'AccHeadTypes', 'action' => 'admin_index'),
+                    'AccHeadLists' => array('title' => 'Accounting Head Lists', 'controller' => 'AccHeadLists', 'action' => 'admin_index'),
+                    'AccEffects' => array('title' => 'Accounting Effects', 'controller' => 'AccEffects', 'action' => 'admin_index'),
+                    'DailyTransactions' => array('title' => 'Daily Transactions', 'controller' => 'DailyTransactions', 'action' => 'admin_index'),
+                    'OpeningBalances' => array('title' => 'Opening Balances', 'controller' => 'OpeningBalances', 'action' => 'admin_index'),
+                    'TrialBalances' => array('title' => 'Trail Balances', 'controller' => 'TrialBalances', 'action' => 'admin_index'),
+                    'CashBookReports' => array('title' => 'Cash Book Reports', 'controller' => 'CashBookReports', 'action' => 'admin_index'),
+                    'IncomeExpenseReports' => array('title' => 'Income ExpenseReports', 'controller' => 'IncomeExpenseReports', 'action' => 'admin_index'),
+                    'LedgerReports' => array('title' => 'Ledger Reports', 'controller' => 'LedgerReports', 'action' => 'admin_index'),
+                    'ReceiptPaymentReports' => array('title' => 'Receipt Payment Reports', 'controller' => 'ReceiptPaymentReports', 'action' => 'admin_index'),
+                    'YearClosingBalanceDetails' => array('title' => 'Year Closing Balance Details', 'controller' => 'YearClosingBalanceDetails', 'action' => 'admin_index'),
+                    'BalanceSheets' => array('title' => 'Balance Sheet', 'controller' => 'BalanceSheets', 'action' => 'admin_index'),
+                    'AnnualDepriciations' => array('title' => 'Annual Depriciations', 'controller' => 'AnnualDepriciations', 'action' => 'admin_index'),
+                )),
+            'BudgetSchedules' => array('title' => 'Budget', 'controller' => 'BudgetSchedules', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+                'child' => array(
+                    'BudgetSchedules' => array('title' => 'Budget Schedules', 'controller' => 'BudgetSchedules', 'action' => 'admin_index'),
+                    'BudgetHeadLists' => array('title' => 'Budget Head Lists', 'controller' => 'BudgetHeadLists', 'action' => 'admin_index'),
+                    'BudgetCategories' => array('title' => 'Budget Categories', 'controller' => 'BudgetCategories', 'action' => 'admin_index'),
+                    'BudgetTypes' => array('title' => 'Budget Types', 'controller' => 'BudgetTypes', 'action' => 'admin_index'),
+                    'OpeningBudgets' => array('title' => 'Opening Budgets', 'controller' => 'OpeningBudgets', 'action' => 'admin_index'),
+                    'CreateBudgets' => array('title' => 'Create Budgets', 'controller' => 'CreateBudgets', 'action' => 'admin_index'),
+                    'BudgetReports' => array('title' => 'Budget Reports', 'controller' => 'BudgetReports', 'action' => 'admin_index')
                 )),
             'TaxSettings' => array('title' => 'Tax Settings', 'controller' => 'Tax Settings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
                 'child' => array(
@@ -233,12 +266,7 @@ class AppController extends Controller {
                     'EmployeeTaxes' => array('title' => 'Employee Taxes', 'controller' => 'EmployeeTaxes', 'action' => 'admin_index'),
                     'EmployeeTaxes/emp_tax_details' => array('title' => 'Emp Tax Details', 'controller' => 'EmployeeTaxes', 'action' => 'admin_emp_tax_details')
                 )),
-            'WarterSupplySettings' => array('title' => 'Warter Supply Settings', 'controller' => 'WarterSupplySettings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
-                'child' => array(
-                    'WarterSupplySettings' => array('title' => 'Warter Supply  List', 'controller' => 'WarterSupplySettings', 'action' => 'admin_index'),
-                    'WarterSupplySettings/add' => array('title' => 'Warter Supply  Add', 'controller' => 'WarterSupplySettings', 'action' => 'admin_add')
-                )),
-            'WarterSupplySettings' => array('title' => 'Warter Supply Settings', 'controller' => 'WarterSupplySettings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-shopping-cart"></i>', 'scroll' => '0',
+            'WarterSupplySettings' => array('title' => 'Warter Supply Settings', 'controller' => 'WarterSupplySettings', 'action' => 'admin_index', 'icon' => '<i class="fa fa-tint"></i>', 'scroll' => '0',
                 'child' => array(
                     'WarterSupplySettings' => array('title' => 'Warter Supply  List', 'controller' => 'WarterSupplySettings', 'action' => 'admin_index'),
                     'WarterSupplySettings/add' => array('title' => 'Warter Supply  Add', 'controller' => 'WarterSupplySettings', 'action' => 'admin_add')

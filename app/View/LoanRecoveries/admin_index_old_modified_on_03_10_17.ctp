@@ -148,19 +148,21 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                         <tr>
                             <th class="text-center">Employee Name(Designation)</th>
                             <th class="text-center">Loan Name</th>
-                            <!--<th class="text-center">Loan Type</th>-->
+                            <th class="text-center">Loan Type</th>
                             <th class="text-center">Loan Starting Date</th>
                             <th class="text-center">Interest Rate</th>
                             <th class="text-center">Total Loan Amount</th>
-                            <th class="text-center">Interest Amount</th>
                             <th class="text-center">Recovery Loan</th>
-                            <th class="text-center">Due Loan</th>
                             <th class="text-center">Status</th>
+                            <th class="text-center">Due Loan</th>
                             <th width="120" class="text-center"><?php echo __('Actions'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($loanRecoveries as $loanRecovery): ?>
+                        <?php
+                        if(!empty($loanRecoveries)):
+
+                        foreach ($loanRecoveries as $loanRecovery): ?>
                             <tr>
                                 <td class="text-center">
                                     <?php echo h($loanRecovery['EmployeeLoan']['Employee']['name']); ?>
@@ -170,9 +172,9 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                     <?php echo h($loanRecovery['EmployeeLoan']['Loan']['name']); ?>
                                 </td>
 
-                                <!--<td class="text-center">
-                                    <?php //echo h($loanRecovery['EmployeeLoan']['LoanType']['name']); ?>
-                                </td>-->
+                                <td class="text-center">
+                                    <?php echo h($loanRecovery['EmployeeLoan']['LoanType']['name']); ?>
+                                </td>
 
                                 <td class="text-center">
                                     <?php echo h($loanRecovery['EmployeeLoan']['loan_approved_date']); ?>
@@ -185,9 +187,7 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                 <td class="text-center">
                                     <?php echo h($loanRecovery['EmployeeLoan']['loan_amount']); ?>
                                 </td>
-                                <td class="text-center">
-                                    <?php echo h($loanRecovery['EmployeeLoan']['interest_amount']); ?>
-                                </td>
+
                                 <td class="text-center">
                                     <?php
                                     $id = $loanRecovery['EmployeeLoan']['id'];
@@ -199,12 +199,7 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                     echo $amnt;
                                     ?>
                                 </td>
-                                <td class="text-center">
-                                    <?php
-                                    $due = $res[0]['EmployeeLoan']['loan_amount'] - $amnt;
-                                    echo $due;
-                                    ?>
-                                </td>
+
                                 <td class="text-center">
                                     <?php
                                     if ($loanRecovery['EmployeeLoan']['status'] == 0) {
@@ -216,30 +211,38 @@ $obj = new LoanRecoveriesController(); //add this for count ttl recovery
                                 </td>
 
                                 <td class="text-center">
+                                    <?php
+                                    $due = $res[0]['EmployeeLoan']['loan_amount'] - $amnt;
+                                    echo $due;
+                                    ?>
+                                </td>
+                                <td class="text-center">
                                     <a href="<?php echo BASE_URL . "admin/loanrecoveries/loan_recovery_details/" . $loanRecovery['EmployeeLoan']['id']; ?>"><span class="btn btn-primary">Details</span></a>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach;
+                                                endif;
+                        ?>
                     </tbody>
                 </table>
-                <div class='row'>
+<!--                <div class='row'>
                     <div class='col-xs-6'>
                         <div id='Users_info' class='dataTables_info'>
-                            <?php echo $this->Paginator->counter(array("format" => __("Page {:page} of {:pages}, showing {:current} records out of {:count} total"))); ?>
+                            <?php //echo $this->Paginator->counter(array("format" => __("Page {:page} of {:pages}, showing {:current} records out of {:count} total"))); ?>
                         </div>
                     </div>
                     <div class='col-xs-6'>
                         <div class='dataTables_paginate paging_bootstrap'>
                             <ul class='pagination'>
                                 <?php
-                                echo $this->Paginator->prev(__("prev"), array("tag" => "li"), null, array("tag" => "li", "class" => "disabled", "disabledTag" => "a"));
-                                echo $this->Paginator->numbers(array("separator" => "", "currentTag" => "a", "currentClass" => "active", "tag" => "li", "first" => 1));
-                                echo $this->Paginator->next(__("next"), array("tag" => "li", "currentClass" => "disabled"), null, array("tag" => "li", "class" => "disabled", "disabledTag" => "a"));
+                               // echo $this->Paginator->prev(__("prev"), array("tag" => "li"), null, array("tag" => "li", "class" => "disabled", "disabledTag" => "a"));
+                               // echo $this->Paginator->numbers(array("separator" => "", "currentTag" => "a", "currentClass" => "active", "tag" => "li", "first" => 1));
+                               // echo $this->Paginator->next(__("next"), array("tag" => "li", "currentClass" => "disabled"), null, array("tag" => "li", "class" => "disabled", "disabledTag" => "a"));
                                 ?>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

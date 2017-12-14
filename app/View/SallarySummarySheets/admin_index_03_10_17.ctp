@@ -13,6 +13,8 @@ foreach ($salarySheets as $v)
 	}
 }
 
+$total = $total + $EmployeeBonus[0][0]['bonus_amount'];
+
 
 ?>
 
@@ -125,7 +127,7 @@ foreach ($salarySheets as $v)
  		<td>Education</td>
  		<td><?=$salarySheets[0][0]['education']; ?></td>
  		<td>Telephone</td>
- 		<td><?=$salarySheets[0][0]['telephone_allowance']; ?></td>
+ 		<td><?=$salarySheets[0][0]['telephone_recovery']; ?></td>
  	</tr>
 
  	<tr>
@@ -192,8 +194,8 @@ foreach ($salarySheets as $v)
  	</tr>
 
  	<tr>
- 		<td></td>
- 		<td></td>
+ 		<td>Bonus</td>
+ 		<td><?= $EmployeeBonus[0][0]['bonus_amount']; ?> </td>
  		<td>Group Insurance</td>
  		<td><?=$salarySheets[0][0]['group_insurance']; ?></td>
  	</tr>
